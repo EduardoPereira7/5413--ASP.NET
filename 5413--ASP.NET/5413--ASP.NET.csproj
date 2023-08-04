@@ -78,9 +78,7 @@
     <Compile Include="BLL\Artigo.cs" />
     <Compile Include="BLL\Utilizador.cs" />
     <Compile Include="BLL\UtilizadorBLL.cs" />
-    <Compile Include="DAL\ArtigoDAL.cs" />
     <Compile Include="DAL\DAL.cs" />
-    <Compile Include="DAL\UtilizadorDAL.cs" />
     <Compile Include="Master.Master.cs">
       <DependentUpon>Master.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
