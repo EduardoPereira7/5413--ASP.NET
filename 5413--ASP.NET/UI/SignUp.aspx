@@ -28,9 +28,9 @@
             </div>
         </div>
         <br />
-        <div class="d-flex justify-content-center align-items-center">
+        <div class="d-flex justify-content-center align-items-center flex-column mt-4">
+            <asp:Label ID="lblRegisterError" runat="server" Text="Label" Visible="false" CssClass="mb-4 text-danger"></asp:Label>
             <asp:Button runat="server" ID="btnRegister" Text="Create account" CssClass="btn btn-dark w-25" OnClick="btnRegister_Click" />
-            <asp:Label ID="lblRegisterError" runat="server" Text="Label"></asp:Label>
         </div>
     </div>
 

@@ -7,11 +7,47 @@ namespace _5413__ASP.NET.BLL
 {
     public class Utilizador
     {
-        public int Id { get; set; }
-        public string Nome { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public bool Verificado { get; set; } // fica true após ser verificado pelo Admin
-        public string Tipo { get; set; } //admin ou normalUser
+        public string Nome;
+        public string Email;
+        public string Password;
+        public bool Verificado; // fica true após ser verificado pelo Admin
+        public string Tipo; //admin ou normalUser
+
+        public Utilizador() { }
+        public Utilizador(string nome, string email, string password, bool verificado, string tipo) 
+        {
+            this.Nome = nome;
+            this.Email = email;
+            this.Password = password;
+            this.Verificado = verificado;
+            this.Tipo = tipo;
+        }
+        public string getNome()
+        {
+            return this.Nome;
+        }
+        public string getEmail()
+        {
+            return this.Email;
+        }
+        public string getPassword()
+        {
+            return this.Password;
+        }
+        public int getVerificacao()
+        {
+            if (this.Verificado == true)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        public string getTipo()
+        {
+            return this.Tipo;
+        }
     }
 }

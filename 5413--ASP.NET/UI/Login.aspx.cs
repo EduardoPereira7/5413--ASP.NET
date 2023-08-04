@@ -1,4 +1,5 @@
-﻿using _5413__ASP.NET.DAL;
+﻿using _5413__ASP.NET.BLL;
+using _5413__ASP.NET.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,21 +15,25 @@ namespace _5413__ASP.NET.UI
         {
 
         }
+
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            var utilizadorDAL = new UtilizadorDAL();
-            var utilizador = utilizadorDAL.ObterUtilizadorPorEmail(txtEmail.Text);
+            string Email = txtEmail.Text;
+            string Password = txtPassword.Text;
 
-            if (utilizador != null && utilizador.Password == txtPassword.Text)
+            BLL.UtilizadorBLL bll = new BLL.UtilizadorBLL();
+            Utilizador user = bll.LoginUtilizador(Email, Password);
+
+            if (user != null)
             {
-                // Efetuar o login - armazenar o ID do utilizador na sessão para mantê-lo autenticado
-                Session["UtilizadorID"] = utilizador.Id;
+                // Login bem-sucedido, armazenar o utilizador na sessão e redirecionar
+                Session["Utilizador"] = user;
                 Response.Redirect("index.aspx");
             }
             else
             {
-                // Login falhou, mostrar mensagem de erro
-                lblLoginError.Text = "Credenciais inválidas ou conta não verificada. Por favor, tente novamente.";
+                lblLoginError.Visible = true;
+                lblLoginError.Text = "Email ou password inválidos. Por favor, tente novamente.";
             }
         }
     }

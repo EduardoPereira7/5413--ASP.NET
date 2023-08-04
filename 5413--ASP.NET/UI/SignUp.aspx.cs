@@ -18,17 +18,14 @@ namespace _5413__ASP.NET.UI
         }
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            var utilizadorDAL = new UtilizadorDAL();
-            var utilizador = new Utilizador
-            {
-                Nome = txtFirstName.Text + " " + txtLastName.Text,
-                Email = txtRegisterEmail.Text,
-                Password = txtRegisterPassword.Text,
-                Verificado = false,
-                Tipo = "normalUser"
-            };
+            string Nome = txtFirstName.Text + " " + txtLastName.Text;
+            string Email = txtRegisterEmail.Text;
+            string Password = txtRegisterPassword.Text;
+            bool Verificado = false;
+            string Tipo = "normalUser";
 
-            if (utilizadorDAL.AdicionarUtilizador(utilizador))
+            BLL.UtilizadorBLL b = new BLL.UtilizadorBLL();
+            if (b.criarUtilizador(Nome, Email, Password, Verificado, Tipo))
             {
                 // Registo bem-sucedido, redirecionar para a página de login
                 Response.Redirect("Login.aspx");
@@ -36,6 +33,7 @@ namespace _5413__ASP.NET.UI
             else
             {
                 // Registo falhou, mostrar mensagem de erro
+                lblRegisterError.Visible = true;
                 lblRegisterError.Text = "Ocorreu um erro ao registar. Por favor, tente novamente.";
             }
         }
