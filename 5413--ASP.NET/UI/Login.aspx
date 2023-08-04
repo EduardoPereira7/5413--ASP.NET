@@ -18,7 +18,8 @@
         </div>
         <br />
         <div class="d-flex justify-content-center align-items-center">
-            <asp:Button ID="btnSubmitLogin" runat="server" Text="Submit" CssClass="btn btn-dark w-25" OnClick="btnSubmitLogin_Click" />
+            <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn btn-dark w-25" OnClick="btnLogin_Click" />
+            <asp:Label ID="lblLoginError" runat="server" Text="Label"></asp:Label>
         </div>
     </div>
 
