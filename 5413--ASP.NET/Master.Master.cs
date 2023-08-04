@@ -1,4 +1,6 @@
-﻿using System;
+﻿using _5413__ASP.NET.BLL;
+using _5413__ASP.NET.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,23 +15,22 @@ namespace _5413__ASP.NET
         {
             if (!IsPostBack)
             {
-                /* Verificar se o utilizador está logado
-                if ()
-                
-                    // Utilizador com login, esconder "Login" e "Sign up", mostrar "Log Out"
-                    loginLink.Visible = false;
-                    signUpLink.Visible = false;
-                    logoutLink.Visible = true;
+                if (Session["Utilizador"] != null)
+                {
+                    Utilizador user = (Utilizador)Session["Utilizador"];
+                    loginListItem.Visible = false;
+                    SignUpListItem.Visible = false;
+                    LogOutListItem.Visible = true;
+                    UserNameListItem.Visible = true;
+                    UserName.InnerHtml = "Olá, " + user.Nome + "!";
                 }
                 else
                 {
-                */
-                    // Utilizador sem login, esconder "Log Out", mostrar "Login" e "Sign up"
-                    loginLink.Visible = true;
-                    signUpLink.Visible = true;
-                    logoutLink.Visible = false;
-                //}
-
+                    loginListItem.Visible = true;
+                    SignUpListItem.Visible = true;
+                    LogOutListItem.Visible = false;
+                    UserNameListItem.Visible = false;
+                }
             }
         }
     }

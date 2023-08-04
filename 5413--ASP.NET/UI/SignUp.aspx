@@ -20,16 +20,17 @@
         <div class="form-row">
             <div class="col-md-6 mb-3">
                 <label for="exampleInputEmail1">Email address</label>
-                <asp:TextBox runat="server" ID="txtEmail" CssClass="form-control"></asp:TextBox>
+                <asp:TextBox runat="server" ID="txtRegisterEmail" CssClass="form-control"></asp:TextBox>
             </div>
             <div class="col-md-6 mb-3">
                 <label for="exampleInputPassword1">Password</label>
-                <asp:TextBox runat="server" ID="txtPassword" CssClass="form-control"></asp:TextBox>
+                <asp:TextBox runat="server" ID="txtRegisterPassword" CssClass="form-control"></asp:TextBox>
             </div>
         </div>
         <br />
-        <div class="d-flex justify-content-center align-items-center">
-            <asp:Button runat="server" ID="btnSubmitSignUp" Text="Create account" CssClass="btn btn-dark w-25" OnClick="btnSubmitSignUp_Click" />
+        <div class="d-flex justify-content-center align-items-center flex-column mt-4">
+            <asp:Label ID="lblRegisterError" runat="server" Text="Label" Visible="false" CssClass="mb-4 text-danger"></asp:Label>
+            <asp:Button runat="server" ID="btnRegister" Text="Create account" CssClass="btn btn-dark w-25" OnClick="btnRegister_Click" />
         </div>
     </div>
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using _5413__ASP.NET.BLL;
+using _5413__ASP.NET.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,9 +16,25 @@ namespace _5413__ASP.NET.UI
 
         }
 
-        protected void btnSubmitLogin_Click(object sender, EventArgs e)
+        protected void btnLogin_Click(object sender, EventArgs e)
         {
+            string Email = txtEmail.Text;
+            string Password = txtPassword.Text;
 
+            BLL.UtilizadorBLL bll = new BLL.UtilizadorBLL();
+            Utilizador user = bll.LoginUtilizador(Email, Password);
+
+            if (user != null)
+            {
+                // Login bem-sucedido, armazenar o utilizador na sessão e redirecionar
+                Session["Utilizador"] = user;
+                Response.Redirect("index.aspx");
+            }
+            else
+            {
+                lblLoginError.Visible = true;
+                lblLoginError.Text = "Email ou password inválidos. Por favor, tente novamente.";
+            }
         }
     }
 }

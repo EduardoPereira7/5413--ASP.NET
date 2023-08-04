@@ -51,6 +51,15 @@ namespace _5413__ASP.NET
         protected global::System.Web.UI.WebControls.Button searchButton;
 
         /// <summary>
+        /// loginListItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl loginListItem;
+
+        /// <summary>
         /// loginLink control.
         /// </summary>
         /// <remarks>
@@ -60,6 +69,15 @@ namespace _5413__ASP.NET
         protected global::System.Web.UI.HtmlControls.HtmlAnchor loginLink;
 
         /// <summary>
+        /// SignUpListItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SignUpListItem;
+
+        /// <summary>
         /// signUpLink control.
         /// </summary>
         /// <remarks>
@@ -67,6 +85,33 @@ namespace _5413__ASP.NET
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor signUpLink;
+
+        /// <summary>
+        /// UserNameListItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl UserNameListItem;
+
+        /// <summary>
+        /// UserName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor UserName;
+
+        /// <summary>
+        /// LogOutListItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LogOutListItem;
 
         /// <summary>
         /// logoutLink control.
