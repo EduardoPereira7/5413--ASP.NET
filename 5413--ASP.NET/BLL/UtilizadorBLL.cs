@@ -8,20 +8,22 @@ namespace _5413__ASP.NET.BLL
 {
     public class UtilizadorBLL
     {
+        public string sqlCommand;
+
         public bool criarUtilizador(string nome, string email, string password, bool verificado, string tipo)
         {
             Utilizador u = new Utilizador(nome,email,password,verificado,tipo);
-            string sql = "Insert into Utilizadores (Nome, Email, Password, Verificado, Tipo) " +
+            sqlCommand = "Insert into Utilizadores (Nome, Email, Password, Verificado, Tipo) " +
                  "values ('" + u.getNome() + "','" + u.getEmail() + "','" + u.getPassword() + "'," +
                  u.getVerificacao() + ",'" + u.getTipo() + "')";
             DAL.DAL dal = new DAL.DAL();
-            return dal.crud(sql);
+            return dal.crud(sqlCommand);
         }
         public Utilizador LoginUtilizador(string email, string password)
         {
             DAL.DAL dal = new DAL.DAL();
-            string sql = "SELECT * FROM Utilizadores WHERE Email = '" + email + "' AND Password = '" + password + "'";
-            DataSet ds = dal.obterDs(sql);
+            sqlCommand = "SELECT * FROM Utilizadores WHERE Email = '" + email + "' AND Password = '" + password + "'";
+            DataSet ds = dal.obterDs(sqlCommand);
 
             // Verifica se a consulta retornou algum resultado (utilizador encontrado).
             if (ds.Tables[0].Rows.Count > 0)
@@ -39,5 +41,19 @@ namespace _5413__ASP.NET.BLL
             }
             return null;
         }
+        public DataSet obterUtilizadores(bool verificacao)
+        {
+            if (verificacao)
+            {
+                sqlCommand = "select * from Utilizadores";
+            }
+            else
+            {
+                sqlCommand = "select * from Utilizadores where Verificado = 0";
+            }
+            DAL.DAL dal = new DAL.DAL();
+            return dal.obterDs(sqlCommand);
+        }
+
     }
 }
