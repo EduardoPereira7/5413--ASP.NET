@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -54,6 +55,13 @@ namespace _5413__ASP.NET.BLL
             DAL.DAL dal = new DAL.DAL();
             return dal.obterDs(sqlCommand);
         }
+        public void alterarVerificacao(int userId, bool verificado)
+        {
+            string sqlcommand = "UPDATE Utilizadores SET Verificado = " + (verificado ? "1" : "0") + " WHERE Id = " + userId;
+            DAL.DAL dal = new DAL.DAL();
+            dal.crud(sqlcommand);
+        }
+
 
     }
 }

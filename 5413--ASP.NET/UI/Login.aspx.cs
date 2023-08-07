@@ -28,7 +28,7 @@ namespace _5413__ASP.NET.UI
             {
                 // Login bem-sucedido, armazenar o utilizador na sessão e redirecionar
                 Session["Utilizador"] = user;
-                if (user.Tipo == "admin")
+                if (user.Tipo == "Admin")
                 {
                     Response.Redirect("AdminDashboard.aspx");
                 }
