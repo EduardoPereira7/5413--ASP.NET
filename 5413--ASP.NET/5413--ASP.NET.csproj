@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="UI\AdminDashboard.aspx" />
+    <Content Include="UI\CriarArtigo.aspx" />
     <Content Include="UI\index.aspx" />
     <Content Include="UI\Login.aspx" />
     <Content Include="UI\Logout.aspx" />
@@ -79,6 +80,7 @@
     <Compile Include="BLL\Artigo.cs" />
     <Compile Include="BLL\ArtigoBLL.cs" />
     <Compile Include="BLL\Categoria.cs" />
+    <Compile Include="BLL\CategoriaBLL.cs" />
     <Compile Include="BLL\Utilizador.cs" />
     <Compile Include="BLL\UtilizadorBLL.cs" />
     <Compile Include="DAL\DAL.cs" />
@@ -96,6 +98,13 @@
     </Compile>
     <Compile Include="UI\AdminDashboard.aspx.designer.cs">
       <DependentUpon>AdminDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CriarArtigo.aspx.cs">
+      <DependentUpon>CriarArtigo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\CriarArtigo.aspx.designer.cs">
+      <DependentUpon>CriarArtigo.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>

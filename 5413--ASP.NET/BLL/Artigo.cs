@@ -16,6 +16,17 @@ namespace _5413__ASP.NET.BLL
         public int CategoriaId; // Chave estrangeira para Categoria
         public int UtilizadorId; // Chave estrangeira para Utilizador
 
+        public Artigo(string titulo, string subtitulo, string conteudo, DateTime DataPublicacao, bool acessibilidade, int categoriaID, int utilizadorID)
+        {
+            this.Titulo = titulo;
+            this.Subtitulo = subtitulo;
+            this.Conteudo = conteudo;
+            this.DataPublicacao = DataPublicacao;
+            this.Acessibilidade = acessibilidade;
+            this.CategoriaId = categoriaID;
+            this.UtilizadorId = utilizadorID;
+        }
+
         public int getId()
         {
             return this.Id;

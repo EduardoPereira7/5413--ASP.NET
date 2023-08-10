@@ -26,5 +26,15 @@ namespace _5413__ASP.NET.BLL
             DAL.DAL dal = new DAL.DAL();
             dal.crud(sql);
         }
+        public bool CriarArtigo(string titulo, string subtitulo, string conteudo, DateTime dataPublicacao, bool acessibilidade, int categoriaId, int utilizadorId)
+        {
+            string sqlInsert = $@"
+            INSERT INTO Artigos (Titulo, Subtitulo, Conteudo, DataPublicacao, Acessibilidade, CategoriaId, UtilizadorId)
+            VALUES ('{titulo}', '{subtitulo}', '{conteudo}', '{dataPublicacao.ToString("yyyy-MM-dd HH:mm:ss")}', '{(acessibilidade ? "1" : "0")}', {categoriaId}, {utilizadorId})
+        ";
+
+            DAL.DAL dal = new DAL.DAL();
+            return dal.crud(sqlInsert);
+        }
     }
 }

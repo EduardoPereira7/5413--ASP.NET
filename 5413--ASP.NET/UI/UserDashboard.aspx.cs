@@ -23,7 +23,7 @@ namespace _5413__ASP.NET.UI
 
         protected void criarArtigo_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("CriarArtigo.aspx");
         }
 
         protected void gerirMeusArtigos_Click(object sender, EventArgs e)
@@ -53,7 +53,8 @@ namespace _5413__ASP.NET.UI
 
         protected void btnEditar_Click(object sender, EventArgs e)
         {
-
+           
+            
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)
