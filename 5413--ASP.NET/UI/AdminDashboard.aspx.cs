@@ -23,10 +23,6 @@ namespace _5413__ASP.NET.UI
             Utilizador user = (Utilizador)Session["Utilizador"];
             if (user.Tipo != "Admin")
             {
-                // Exibir aviso
-               // ClientScript.RegisterStartupScript(this.GetType(), "Acesso Negado", "alert('Aviso: Você está a tentar aceder a uma página restrita.');", true);
-
-                // Redirecionar para a página "SemAcesso.aspx"
                 Response.Redirect("index.aspx");
                 return;
             }
@@ -80,9 +76,18 @@ namespace _5413__ASP.NET.UI
             listarUtilizadores.PageIndex = e.NewPageIndex;
             preencherTodosUtilizadores();
         }
-        protected void esconderNaoVerificados_CheckedChanged(object sender, EventArgs e)
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            //codigo para esconder users nao verificados da tabela "Todos os Utilizadores"
+            Button btn = (Button)sender;
+            int userId = Convert.ToInt32(btn.CommandArgument);
+
+            // Chamar um método na BLL para eliminar o utilizador com o userId
+            BLL.UtilizadorBLL b = new BLL.UtilizadorBLL();
+            b.eliminarUtilizador(userId);
+
+            preencherUtilizadoresNaoVerificados();
+            preencherTodosUtilizadores();
         }
     }
 }

@@ -8,7 +8,7 @@
     </div>
 
     <div class="text-left mt-5 mb-3">
-        <h2>Utilizadores Não Verificados</h2>
+        <h2>Pendentes de Verificação</h2>
     </div>
     <div class="table-responsive">
         <asp:GridView ID="listarNaoVerificados" OnPageIndexChanging="listarNaoVerificados_PageIndexChanging" runat="server" CssClass="table table-striped table-bordered table-hover" AutoGenerateColumns="False">
@@ -21,8 +21,9 @@
                 <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
                 <asp:TemplateField HeaderText="Ação">
             <ItemTemplate>
-                <asp:Button ID="btnVerificar" runat="server" Text="Verificar" OnClick="btnVerificar_Click" CommandArgument='<%# Eval("Id") %>' Visible='<%# !(bool)Eval("Verificado") %>' />
-            </ItemTemplate>
+                    <asp:Button ID="btnVerificar" runat="server" Text="Verificar" OnClick="btnVerificar_Click" CommandArgument='<%# Eval("Id") %>' Visible='<%# !(bool)Eval("Verificado") %>' />
+                    <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("Id") %>' />
+                </ItemTemplate>
         </asp:TemplateField>
             </Columns>
         </asp:GridView>
@@ -40,11 +41,14 @@
                 <%--<asp:BoundField DataField="Password" HeaderText="Password" />--%>
                 <asp:BoundField DataField="Verificado" HeaderText="Verificado" />
                 <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
+                <asp:TemplateField HeaderText="Ação">
+            <ItemTemplate>
+                <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("Id") %>' />
+            </ItemTemplate>
+        </asp:TemplateField>
             </Columns>
         </asp:GridView>
     </div>
-    <asp:CheckBox ID="esconderNaoVerificados" runat="server" AutoPostBack="true" OnCheckedChanged="esconderNaoVerificados_CheckedChanged" Text="Esconder não verificados" />
-
-
+    
     </div>
 </asp:Content>

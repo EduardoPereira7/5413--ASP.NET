@@ -32,6 +32,7 @@ namespace _5413__ASP.NET.BLL
                 // Se houver pelo menos uma linha de resultado, cria um objeto Utilizador com os dados obtidos do banco de dados.
                 DataRow row = ds.Tables[0].Rows[0];
                 Utilizador user = new Utilizador(
+                    Convert.ToInt32(row["Id"]),
                     row["Nome"].ToString(),
                     row["Email"].ToString(),
                     row["Password"].ToString(),
@@ -46,7 +47,7 @@ namespace _5413__ASP.NET.BLL
         {
             if (verificacao)
             {
-                sqlCommand = "select * from Utilizadores";
+                sqlCommand = "select * from Utilizadores where Verificado = 1";
             }
             else
             {
@@ -61,7 +62,11 @@ namespace _5413__ASP.NET.BLL
             DAL.DAL dal = new DAL.DAL();
             dal.crud(sqlcommand);
         }
-
-
+        public void eliminarUtilizador(int userId)
+        {
+            string sql = "DELETE FROM Utilizadores WHERE Id = " + userId;
+            DAL.DAL dal = new DAL.DAL();
+            dal.crud(sql);
+        }
     }
 }
