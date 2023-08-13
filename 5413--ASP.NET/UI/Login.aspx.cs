@@ -23,12 +23,21 @@ namespace _5413__ASP.NET.UI
 
             BLL.UtilizadorBLL bll = new BLL.UtilizadorBLL();
             Utilizador user = bll.LoginUtilizador(Email, Password);
+            
 
             if (user != null)
             {
                 // Login bem-sucedido, armazenar o utilizador na sessão e redirecionar
                 Session["Utilizador"] = user;
-                Response.Redirect("index.aspx");
+                //Session["UserID"] = user.Id;
+                if (user.Tipo == "Admin")
+                {
+                    Response.Redirect("AdminDashboard.aspx");
+                }
+                else
+                {
+                    Response.Redirect("UserDashboard.aspx");
+                }
             }
             else
             {

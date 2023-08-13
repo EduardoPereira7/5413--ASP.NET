@@ -22,17 +22,15 @@ namespace _5413__ASP.NET.UI
             string Email = txtRegisterEmail.Text;
             string Password = txtRegisterPassword.Text;
             bool Verificado = false;
-            string Tipo = "normalUser";
+            string Tipo = "Utilizador Normal";
 
             BLL.UtilizadorBLL b = new BLL.UtilizadorBLL();
             if (b.criarUtilizador(Nome, Email, Password, Verificado, Tipo))
             {
-                // Registo bem-sucedido, redirecionar para a página de login
                 Response.Redirect("Login.aspx");
             }
             else
             {
-                // Registo falhou, mostrar mensagem de erro
                 lblRegisterError.Visible = true;
                 lblRegisterError.Text = "Ocorreu um erro ao registar. Por favor, tente novamente.";
             }

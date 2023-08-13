@@ -33,5 +33,4 @@
             <asp:Button runat="server" ID="btnRegister" Text="Create account" CssClass="btn btn-dark w-25" OnClick="btnRegister_Click" />
         </div>
     </div>
-
 </asp:Content>
