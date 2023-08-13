@@ -32,7 +32,7 @@ namespace _5413__ASP.NET.UI
                 //Session["UserID"] = user.Id;
                 if (user.Tipo == "Admin")
                 {
-                    Response.Redirect("UserDashboard.aspx");
+                    Response.Redirect("AdminDashboard.aspx");
                 }
                 else
                 {
