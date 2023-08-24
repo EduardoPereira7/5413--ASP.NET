@@ -11,15 +11,21 @@ namespace _5413__ASP.NET.BLL
     {
         public string sqlCommand;
 
-        public bool criarUtilizador(string nome, string email, string password, bool verificado, string tipo)
+        public bool criarUtilizador(string nome, string email, string password)
         {
-            Utilizador u = new Utilizador(nome,email,password,verificado,tipo);
-            sqlCommand = "Insert into Utilizadores (Nome, Email, Password, Verificado, Tipo) " +
-                 "values ('" + u.getNome() + "','" + u.getEmail() + "','" + u.getPassword() + "'," +
-                 u.getVerificacao() + ",'" + u.getTipo() + "')";
+
+            //insert into utilizadores values('admin','admin@admin','admin', 1 , 1);
+            sqlCommand = "Insert into Utilizadores values('" 
+                + nome + "','" 
+                + email + "','"
+                + password + "',"
+                + 0 + ","
+                + 0 + ")";
+
             DAL.DAL dal = new DAL.DAL();
             return dal.crud(sqlCommand);
-        }
+        }//-------------------------------------------------------------------------------------------------------------
+
         public Utilizador LoginUtilizador(string email, string password)
         {
             DAL.DAL dal = new DAL.DAL();
@@ -37,12 +43,13 @@ namespace _5413__ASP.NET.BLL
                     row["Email"].ToString(),
                     row["Password"].ToString(),
                     Convert.ToBoolean(row["Verificado"]),
-                    row["Tipo"].ToString()
+                    Convert.ToBoolean(row["Admin"])
                 );
                 return user;
             }
             return null;
-        }
+        }//-------------------------------------------------------------------------------------------------------------
+
         public DataSet obterUtilizadores(bool verificacao)
         {
             if (verificacao)
@@ -55,18 +62,28 @@ namespace _5413__ASP.NET.BLL
             }
             DAL.DAL dal = new DAL.DAL();
             return dal.obterDs(sqlCommand);
-        }
+        }//-------------------------------------------------------------------------------------------------------------
+
         public void alterarVerificacao(int userId, bool verificado)
         {
             string sqlcommand = "UPDATE Utilizadores SET Verificado = " + (verificado ? "1" : "0") + " WHERE Id = " + userId;
             DAL.DAL dal = new DAL.DAL();
             dal.crud(sqlcommand);
-        }
+        }//-------------------------------------------------------------------------------------------------------------
+
         public void eliminarUtilizador(int userId)
         {
             string sql = "DELETE FROM Utilizadores WHERE Id = " + userId;
             DAL.DAL dal = new DAL.DAL();
             dal.crud(sql);
-        }
+        }//-------------------------------------------------------------------------------------------------------------
+
+        public bool verSeEmailJaExiste(string email)
+        {
+            string sql = "select * FROM Utilizadores WHERE email = '" + email + "'";
+            DAL.DAL dal = new DAL.DAL();
+            return dal.crud(sql);
+        }//-------------------------------------------------------------------------------------------------------------
+
     }
 }

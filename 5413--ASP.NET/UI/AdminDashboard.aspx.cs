@@ -21,7 +21,8 @@ namespace _5413__ASP.NET.UI
             }
 
             Utilizador user = (Utilizador)Session["Utilizador"];
-            if (user.Tipo != "Admin")
+
+            if (!user.Admin)
             {
                 Response.Redirect("index.aspx");
                 return;
@@ -34,6 +35,7 @@ namespace _5413__ASP.NET.UI
                 preencherTodosUtilizadores();
             }
         }
+
         protected void preencherGridView(GridView gridView, bool verificado)
         {
             BLL.UtilizadorBLL b = new BLL.UtilizadorBLL();

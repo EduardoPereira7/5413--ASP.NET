@@ -18,7 +18,7 @@
                 <asp:BoundField DataField="Email" HeaderText="Email" />
                 <%--<asp:BoundField DataField="Password" HeaderText="Password" />--%>
                 <asp:BoundField DataField="Verificado" HeaderText="Verificado" />
-                <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
+                <asp:BoundField DataField="admin" HeaderText="admin" />
                 <asp:TemplateField HeaderText="Ação">
             <ItemTemplate>
                     <asp:Button ID="btnVerificar" runat="server" Text="Verificar" OnClick="btnVerificar_Click" CommandArgument='<%# Eval("Id") %>' Visible='<%# !(bool)Eval("Verificado") %>' />
@@ -40,7 +40,7 @@
                 <asp:BoundField DataField="Email" HeaderText="Email" />
                 <%--<asp:BoundField DataField="Password" HeaderText="Password" />--%>
                 <asp:BoundField DataField="Verificado" HeaderText="Verificado" />
-                <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
+                <asp:BoundField DataField="admin" HeaderText="admin" />
                 <asp:TemplateField HeaderText="Ação">
             <ItemTemplate>
                 <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("Id") %>' />

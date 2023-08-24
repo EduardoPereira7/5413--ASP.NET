@@ -12,25 +12,25 @@ namespace _5413__ASP.NET.BLL
         public string Email;
         public string Password;
         public bool Verificado; // fica true após ser verificado pelo Admin
-        public string Tipo; //admin ou normalUser
+        public bool Admin; //admin ou normalUser
 
         public Utilizador() { }
-        public Utilizador(string nome, string email, string password, bool verificado, string tipo) 
+        public Utilizador(string nome, string email, string password, bool verificado, bool admin) 
         {
             this.Nome = nome;
             this.Email = email;
             this.Password = password;
             this.Verificado = verificado;
-            this.Tipo = tipo;
+            this.Admin = admin;
         }
-        public Utilizador(int Id, string nome, string email, string password, bool verificado, string tipo)
+        public Utilizador(int Id, string nome, string email, string password, bool verificado, bool admin)
         {
             this.Id = Id;
             this.Nome = nome;
             this.Email = email;
             this.Password = password;
             this.Verificado = verificado;
-            this.Tipo = tipo;
+            this.Admin = admin;
         }
         public int getId()
         {
@@ -59,9 +59,9 @@ namespace _5413__ASP.NET.BLL
                 return 0;
             }
         }
-        public string getTipo()
+        public bool getadmin()
         {
-            return this.Tipo;
+            return this.Admin;
         }
     }
 }
