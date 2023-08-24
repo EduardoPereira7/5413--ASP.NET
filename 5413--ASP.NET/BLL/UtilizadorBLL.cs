@@ -78,11 +78,11 @@ namespace _5413__ASP.NET.BLL
             dal.crud(sql);
         }//-------------------------------------------------------------------------------------------------------------
 
-        public bool verSeEmailJaExiste(string email)
+        public int verSeEmailJaExiste(string email)
         {
-            string sql = "select * FROM Utilizadores WHERE email = '" + email + "'";
+            string sql = "select count(*) FROM Utilizadores WHERE email = '" + email + "'";
             DAL.DAL dal = new DAL.DAL();
-            return dal.crud(sql);
+            return dal.countRows(sql);
         }//-------------------------------------------------------------------------------------------------------------
 
     }

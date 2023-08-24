@@ -58,10 +58,6 @@ namespace _5413__ASP.NET.UI
                 lblRegisterError.Text += "Password  tem de ter mais  de 5 caracteres ";
             }
 
-
-
-
-
             if (validateCount > 2)
             {
                 BLL.UtilizadorBLL b = new BLL.UtilizadorBLL();
@@ -76,8 +72,7 @@ namespace _5413__ASP.NET.UI
                     lblRegisterError.Text = "Ocorreu um erro ao registar. Por favor, tente novamente.";
                 }
             }
-
-        }
+        }//----------------------------------------------------------------------------------------------------
 
 
 
@@ -94,7 +89,7 @@ namespace _5413__ASP.NET.UI
 
             BLL.UtilizadorBLL b = new BLL.UtilizadorBLL();
 
-            if (b.verSeEmailJaExiste(email))
+            if (b.verSeEmailJaExiste(email)>0)
                 return "Este Email já foi utilizado";
 
             return "valido";
