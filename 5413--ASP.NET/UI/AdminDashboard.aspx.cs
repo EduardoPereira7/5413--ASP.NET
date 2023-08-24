@@ -81,15 +81,30 @@ namespace _5413__ASP.NET.UI
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
+            L_Error.Visible = false;
             Button btn = (Button)sender;
-            int userId = Convert.ToInt32(btn.CommandArgument);
-
-            // Chamar um método na BLL para eliminar o utilizador com o userId
+            int userId = Convert.ToInt32(btn.CommandArgument);           
+            
             BLL.UtilizadorBLL b = new BLL.UtilizadorBLL();
-            b.eliminarUtilizador(userId);
+            if(b.verSeAdmin(userId)<1 || b.contaAdmins()>1) //se não for Admin ou não for unico Admin
+                b.eliminarUtilizador(userId);
+            else
+            {
+                L_Error.Visible = true;
+                L_Error.Text = "TEM DE HAVER UM ADMIN";
+                return ;
+            }               
+            
 
             preencherUtilizadoresNaoVerificados();
             preencherTodosUtilizadores();
+
+            
+        }
+
+        protected void listarUtilizadores_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

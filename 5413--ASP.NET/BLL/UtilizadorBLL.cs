@@ -85,5 +85,21 @@ namespace _5413__ASP.NET.BLL
             return dal.countRows(sql);
         }//-------------------------------------------------------------------------------------------------------------
 
+        public int verSeAdmin(int userId)
+        {
+            string sql = "select count(*) FROM Utilizadores WHERE id = " + userId + " AND admin = 1";
+            DAL.DAL dal = new DAL.DAL();
+            int rows = dal.countRows(sql);
+            return rows;
+        }//-------------------------------------------------------------------------------------------------------------
+
+        public int contaAdmins()
+        {
+            string sql = "select count(*) FROM Utilizadores WHERE admin = 1";
+            DAL.DAL dal = new DAL.DAL();
+            int rows = dal.countRows(sql);
+            return rows;
+        }//-------------------------------------------------------------------------------------------------------------
+
     }
 }

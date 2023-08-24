@@ -5,6 +5,9 @@
     <div class="container">
         <div class="text-center mt-4 mb-5">
         <h1 class="font-weight-bold">Admin Dashboard</h1>
+            <p class="font-weight-bold">
+                <asp:Label ID="L_Error" runat="server" ForeColor="Red" Text="ERROR" Visible="False"></asp:Label>
+            </p>
     </div>
 
     <div class="text-left mt-5 mb-3">
