@@ -101,5 +101,40 @@ namespace _5413__ASP.NET.BLL
             return rows;
         }//-------------------------------------------------------------------------------------------------------------
 
+        public int alterarAdmin(int userId) 
+        {
+            int admin = 0;
+
+            if (verSeAdmin(userId) == 0)//Não é admin
+                admin = 1;
+            if (admin == 0 && contaAdmins() == 1) //unico admin
+            return 0;
+
+            string sqlcommand = "UPDATE Utilizadores SET admin = " + admin + " WHERE Id = " + userId;
+            DAL.DAL dal = new DAL.DAL();
+            dal.crud(sqlcommand);
+            return 1;
+        }
+        public DataSet obterUtilizador(int userID)
+        {
+            string sqlCommand = "select * from Utilizadores where id = " + userID ;
+         
+            DAL.DAL dal = new DAL.DAL();
+            return dal.obterDs(sqlCommand);
+        }//-------------------------------------------------------------------------------------------------------------
+        public bool editarUtilizador(int userID, string nome, string email, string password, int verificado , int admin)
+        {
+
+            //string sql = "update Artigos SET descricao = '"
+            sqlCommand = "update Utilizadores SET nome = '" + nome 
+                + "',email = '" + email 
+                + "',password = '" + password 
+                + "',verificado = " + verificado 
+                + ",admin = " + admin 
+                + " where id = " + userID + ";";
+
+            DAL.DAL dal = new DAL.DAL();
+            return dal.crud(sqlCommand);
+        }//-------------------------------------------------------------------------------------------------------------
     }
 }
