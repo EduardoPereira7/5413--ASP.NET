@@ -48,22 +48,33 @@ namespace _5413__ASP.NET.UI
 
         protected void dtv_utilizador_ItemUpdating(object sender, DetailsViewUpdateEventArgs e)
         {
-            int userID = Convert.ToInt32(e.NewValues[0].ToString());
+            L_Error.Visible = false;
+
+            BLL.UtilizadorBLL b = new BLL.UtilizadorBLL();
+
+            int userID = Convert.ToInt32(e.NewValues[0].ToString()); 
+            int admin = 0;
+            if (e.NewValues[5].ToString() == "True")
+                admin = 1;
+
+            if (b.contaAdmins() == 1 && admin == 0)
+            {
+                L_Error.Visible = true;
+                L_Error.Text = "TEM DE HAVER UM ADMIN";
+                return;
+            }
+
             string nome = e.NewValues[1].ToString();
             string email = e.NewValues[2].ToString();
             string password = e.NewValues[3].ToString();
             int verificado = 0;
             if (e.NewValues[4].ToString() == "True")
                 verificado = 1;
-            int admin = 0;
-            if (e.NewValues[4].ToString() == "True")
-                admin = 1;
+            
 
-            BLL.UtilizadorBLL b = new BLL.UtilizadorBLL();
             b.editarUtilizador(userID, nome, email, password, verificado, admin);
 
             dtv_utilizador.ChangeMode(DetailsViewMode.ReadOnly);
-            preencheUtilizador(userID);
             Response.Redirect("admindashboard.aspx");
         }//--------------------------------------------------------------------------
     }

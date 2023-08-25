@@ -48,8 +48,7 @@
                 <asp:BoundField DataField="admin" HeaderText="Admin" />
                 <asp:TemplateField HeaderText="Ação">
             <ItemTemplate>
-                <asp:Button ID="btnEdit" runat="server" Text="Editar" OnClick="btnEditar" CommandArgument='<%# Eval("Id") %>' /> 
-                <asp:Button ID="Button1" runat="server" Text="Admin Switch" OnClick="btnAdminSwitch" CommandArgument='<%# Eval("Id") %>' />                
+                <asp:Button ID="btnEdit" runat="server" Text="Editar" OnClick="btnEditar" CommandArgument='<%# Eval("Id") %>' />                
                 <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("Id") %>' />
             </ItemTemplate>
                     <HeaderStyle HorizontalAlign="Center" />

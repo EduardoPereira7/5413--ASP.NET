@@ -5,6 +5,9 @@
         <div class="container">
         <div class="text-center mt-4 mb-5">
         <h1 class="font-weight-bold">Editar Utilizador</h1>
+            <p class="font-weight-bold">
+                <asp:Label ID="L_Error" runat="server" Font-Bold="True" ForeColor="#CC0000" Text="Label" Visible="False"></asp:Label>
+            </p>
 
     </div>
 

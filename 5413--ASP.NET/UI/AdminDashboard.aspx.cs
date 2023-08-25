@@ -104,23 +104,7 @@ namespace _5413__ASP.NET.UI
         }//-----------------------------------------------------------------------------------------
 
 
-        protected void btnAdminSwitch(object sender, EventArgs e)
-        {
-
-            L_Error.Visible = false;
-            Button btn = (Button)sender;
-            int userId = Convert.ToInt32(btn.CommandArgument);
-            BLL.UtilizadorBLL b = new BLL.UtilizadorBLL();
-            if (b.alterarAdmin(userId) == 0)
-            {
-                L_Error.Visible = true;
-                L_Error.Text = "TEM DE HAVER UM ADMIN";
-            }
-
-            preencherUtilizadoresNaoVerificados();
-            preencherTodosUtilizadores();
-
-        }//-----------------------------------------------------------------------------------------
+        
         protected void btnEditar(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
