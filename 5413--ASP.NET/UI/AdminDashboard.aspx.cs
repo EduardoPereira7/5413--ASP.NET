@@ -21,7 +21,8 @@ namespace _5413__ASP.NET.UI
             }
 
             Utilizador user = (Utilizador)Session["Utilizador"];
-            if (user.Tipo != "Admin")
+
+            if (!user.Admin)
             {
                 Response.Redirect("index.aspx");
                 return;
@@ -33,17 +34,62 @@ namespace _5413__ASP.NET.UI
                 preencherUtilizadoresNaoVerificados();
                 preencherTodosUtilizadores();
             }
-        }
+        }//-----------------------------------------------------------------------------------------
+
         protected void preencherGridView(GridView gridView, bool verificado)
         {
             BLL.UtilizadorBLL b = new BLL.UtilizadorBLL();
             DataSet ds = b.obterUtilizadores(verificado);
             gridView.DataSource = ds;
             gridView.AllowPaging = true;
-            gridView.PageSize = 5;
+            gridView.PageSize = 10;
             gridView.AutoGenerateColumns = false;
             gridView.DataBind();
-        }
+        }//-----------------------------------------------------------------------------------------
+
+        protected void preencherUtilizadoresNaoVerificados()
+        {
+            preencherGridView(listarNaoVerificados, false);
+        }//-----------------------------------------------------------------------------------------
+
+        protected void preencherTodosUtilizadores()
+        {
+            preencherGridView(listarUtilizadores, true);
+        }//-----------------------------------------------------------------------------------------
+
+        protected void listarNaoVerificados_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            listarNaoVerificados.PageIndex = e.NewPageIndex;
+            preencherUtilizadoresNaoVerificados();
+        }//-----------------------------------------------------------------------------------------
+
+        protected void listarUtilizadores_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            listarUtilizadores.PageIndex = e.NewPageIndex;
+            preencherTodosUtilizadores();
+        }//-----------------------------------------------------------------------------------------
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            L_Error.Visible = false;
+            Button btn = (Button)sender;
+            int userId = Convert.ToInt32(btn.CommandArgument);           
+            
+            BLL.UtilizadorBLL b = new BLL.UtilizadorBLL();
+            if(b.verSeAdmin(userId)<1 || b.contaAdmins()>1) //se não for Admin ou não for unico Admin
+                b.eliminarUtilizador(userId);
+            else
+            {
+                L_Error.Visible = true;
+                L_Error.Text = "TEM DE HAVER UM ADMIN";
+                return ;
+            }                         
+
+            preencherUtilizadoresNaoVerificados();
+            preencherTodosUtilizadores();
+
+        }//-----------------------------------------------------------------------------------------
+
         protected void btnVerificar_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
@@ -55,39 +101,20 @@ namespace _5413__ASP.NET.UI
 
             preencherUtilizadoresNaoVerificados();
             preencherTodosUtilizadores();
-        }
+        }//-----------------------------------------------------------------------------------------
 
 
-        protected void preencherUtilizadoresNaoVerificados()
-        {
-            preencherGridView(listarNaoVerificados, false);
-        }
-        protected void preencherTodosUtilizadores()
-        {
-            preencherGridView(listarUtilizadores, true);
-        }
-        protected void listarNaoVerificados_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            listarNaoVerificados.PageIndex = e.NewPageIndex;
-            preencherUtilizadoresNaoVerificados();
-        }
-        protected void listarUtilizadores_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            listarUtilizadores.PageIndex = e.NewPageIndex;
-            preencherTodosUtilizadores();
-        }
-
-        protected void btnEliminar_Click(object sender, EventArgs e)
+        
+        protected void btnEditar(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
             int userId = Convert.ToInt32(btn.CommandArgument);
+            Response.Redirect("editarUtilizador.aspx?id=" + userId);
+        }//-----------------------------------------------------------------------------------------
 
-            // Chamar um método na BLL para eliminar o utilizador com o userId
-            BLL.UtilizadorBLL b = new BLL.UtilizadorBLL();
-            b.eliminarUtilizador(userId);
+        protected void listarUtilizadores_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }//-----------------------------------------------------------------------------------------
 
-            preencherUtilizadoresNaoVerificados();
-            preencherTodosUtilizadores();
-        }
     }
 }

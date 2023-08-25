@@ -11,7 +11,7 @@ namespace _5413__ASP.NET.UI
 {
 
 
-    public partial class AdminDashboard
+    public partial class editarUtilizador
     {
 
         /// <summary>
@@ -24,21 +24,12 @@ namespace _5413__ASP.NET.UI
         protected global::System.Web.UI.WebControls.Label L_Error;
 
         /// <summary>
-        /// listarNaoVerificados control.
+        /// dtv_utilizador control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView listarNaoVerificados;
-
-        /// <summary>
-        /// listarUtilizadores control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView listarUtilizadores;
+        protected global::System.Web.UI.WebControls.DetailsView dtv_utilizador;
     }
 }

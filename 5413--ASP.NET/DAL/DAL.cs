@@ -9,7 +9,7 @@ namespace _5413__ASP.NET.DAL
 {
     public class DAL
     {
-        private string connString = @"Data Source=MSIGAMINGPLUS;Initial Catalog=ASP.NET;Integrated Security=True;";
+        private string connString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=blog;Integrated Security=True;";
 
         public bool crud(string sql)
         {
@@ -24,7 +24,23 @@ namespace _5413__ASP.NET.DAL
 
             conn.Close();
             return true;
-        }
+        }//-----------------------------------------------------------------------------
+
+        public int countRows(string sql)
+        {
+            SqlConnection conn = new SqlConnection(connString);
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = sql;
+            cmd.Connection = conn;
+            object result = cmd.ExecuteScalar();
+            int rowCount = Convert.ToInt32(result);
+
+            conn.Close();
+            return rowCount;
+        }//---------------------------------------------------------------------------------------
 
         public DataSet obterDs(string sqlSelect)
         {

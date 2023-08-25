@@ -5,6 +5,9 @@
     <div class="container">
         <div class="text-center mt-4 mb-5">
         <h1 class="font-weight-bold">Admin Dashboard</h1>
+            <p class="font-weight-bold">
+                <asp:Label ID="L_Error" runat="server" ForeColor="Red" Text="ERROR" Visible="False"></asp:Label>
+            </p>
     </div>
 
     <div class="text-left mt-5 mb-3">
@@ -18,13 +21,15 @@
                 <asp:BoundField DataField="Email" HeaderText="Email" />
                 <%--<asp:BoundField DataField="Password" HeaderText="Password" />--%>
                 <asp:BoundField DataField="Verificado" HeaderText="Verificado" />
-                <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
+                <asp:BoundField DataField="admin" HeaderText="Admin" >
+                <HeaderStyle HorizontalAlign="Center" />
+                </asp:BoundField>
                 <asp:TemplateField HeaderText="Ação">
-            <ItemTemplate>
-                    <asp:Button ID="btnVerificar" runat="server" Text="Verificar" OnClick="btnVerificar_Click" CommandArgument='<%# Eval("Id") %>' Visible='<%# !(bool)Eval("Verificado") %>' />
-                    <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("Id") %>' />
-                </ItemTemplate>
-        </asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:Button ID="btnVerificar" runat="server" Text="Verificar" OnClick="btnVerificar_Click" CommandArgument='<%# Eval("Id") %>' Visible='<%# !(bool)Eval("Verificado") %>' />                                  
+                        <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("Id") %>' />
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Columns>
         </asp:GridView>
     </div>
@@ -40,11 +45,13 @@
                 <asp:BoundField DataField="Email" HeaderText="Email" />
                 <%--<asp:BoundField DataField="Password" HeaderText="Password" />--%>
                 <asp:BoundField DataField="Verificado" HeaderText="Verificado" />
-                <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
+                <asp:BoundField DataField="admin" HeaderText="Admin" />
                 <asp:TemplateField HeaderText="Ação">
             <ItemTemplate>
+                <asp:Button ID="btnEdit" runat="server" Text="Editar" OnClick="btnEditar" CommandArgument='<%# Eval("Id") %>' />                
                 <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("Id") %>' />
             </ItemTemplate>
+                    <HeaderStyle HorizontalAlign="Center" />
         </asp:TemplateField>
             </Columns>
         </asp:GridView>

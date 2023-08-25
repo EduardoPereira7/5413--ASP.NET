@@ -30,7 +30,7 @@ namespace _5413__ASP.NET.UI
                 // Login bem-sucedido, armazenar o utilizador na sessão e redirecionar
                 Session["Utilizador"] = user;
                 //Session["UserID"] = user.Id;
-                if (user.Tipo == "Admin")
+                if (user.Admin)
                 {
                     Response.Redirect("AdminDashboard.aspx");
                 }
