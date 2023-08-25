@@ -34,6 +34,10 @@ namespace _5413__ASP.NET.UI
 
         protected void dtv_utilizador_ModeChanging(object sender, DetailsViewModeEventArgs e)
         {
+            if (e.CancelingEdit)
+            {
+                Response.Redirect("admindashboard.aspx");
+            }
             if (dtv_utilizador.CurrentMode == DetailsViewMode.ReadOnly)
             {
                 dtv_utilizador.ChangeMode(DetailsViewMode.Edit);

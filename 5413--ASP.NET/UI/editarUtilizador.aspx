@@ -19,7 +19,8 @@
     <hr />
     <asp:DetailsView ID="dtv_utilizador" runat="server" Height="50px" Width="125px"
                     OnModeChanging="dtv_utilizador_ModeChanging"
-                    OnItemUpdating="dtv_utilizador_ItemUpdating" CellPadding="10" ForeColor="#333333" GridLines="None">
+                    OnItemUpdating="dtv_utilizador_ItemUpdating" DefaultMode="Edit">
+
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#D1DDF1" Font-Bold="True" />
         <EditRowStyle BackColor="#2461BF" Width="300px" />
@@ -29,6 +30,7 @@
         <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" Width="300px" />
         <RowStyle BackColor="#EFF3FB" />
     </asp:DetailsView>
-    <p>
-        &nbsp;</p>
+  
+    </div>
+        &nbsp;
 </asp:Content>
