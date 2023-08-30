@@ -31,10 +31,44 @@ namespace _5413__ASP.NET.BLL
             string sqlInsert = $@"
             INSERT INTO Artigos (Titulo, Subtitulo, Conteudo, DataPublicacao, Acessibilidade, CategoriaId, UtilizadorId)
             VALUES ('{titulo}', '{subtitulo}', '{conteudo}', '{dataPublicacao.ToString("yyyy-MM-dd HH:mm:ss")}', '{(acessibilidade ? "1" : "0")}', {categoriaId}, {utilizadorId})
-        ";
+            ";
 
             DAL.DAL dal = new DAL.DAL();
             return dal.crud(sqlInsert);
         }
+
+
+
+
+
+
+
+
+
+
+
+        public DataSet ObterArtigo(int artigoID)
+        {
+            string sql = $"SELECT A.*, C.Nome AS NomeCategoria " +
+                 $"FROM Artigos AS A " +
+                 $"INNER JOIN Categorias AS C ON A.CategoriaId = C.Id " +
+                 $"WHERE A.Id = {artigoID}";
+            DAL.DAL dal = new DAL.DAL();
+            return dal.obterDs(sql);
+        }
+        public bool editarArtigo(int artigoId, string novoTitulo, string novoSubtitulo, string novoConteudo, int novaCategoriaId, bool novaAcessibilidade)
+        {
+            string sqlUpdate = $@"UPDATE Artigos
+                SET Titulo = '{novoTitulo}',
+                Subtitulo = '{novoSubtitulo}',
+                Conteudo = '{novoConteudo}',
+                CategoriaId = {novaCategoriaId},
+                Acessibilidade = {(novaAcessibilidade ? "1" : "0")}
+                WHERE Id = {artigoId}";
+
+            DAL.DAL dal = new DAL.DAL();
+            return dal.crud(sqlUpdate);
+        }
+
     }
 }
