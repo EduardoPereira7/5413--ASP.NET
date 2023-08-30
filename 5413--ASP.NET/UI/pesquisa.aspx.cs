@@ -1,8 +1,12 @@
-﻿using System;
+﻿using _5413__ASP.NET.BLL;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace _5413__ASP.NET.UI
@@ -40,10 +44,34 @@ namespace _5413__ASP.NET.UI
 
         protected void btn_Pesquizar_Click(object sender, EventArgs e)
         {
-            string sAno = DD_Anos.SelectedValue;
-            string sMes = DD_Mes.SelectedValue;
-            List_ResultadosPesquisa.Items.Add(sAno + " " + sMes);
+            int anoSelecionado = Convert.ToInt32(DD_Anos.SelectedValue);
+            int mesSelecionado = Convert.ToInt32(DD_Mes.SelectedValue);
 
+            ArtigoBLL artigoBLL = new ArtigoBLL();
+            DataSet dataSet = artigoBLL.ObterArtigosPorData(anoSelecionado, mesSelecionado);
+
+            CardsContainer.InnerHtml = "";
+
+            foreach (DataRow row in dataSet.Tables[0].Rows)
+            {
+                int artigoId = Convert.ToInt32(row["Id"]);
+                string titulo = row["Titulo"].ToString();
+                DateTime dataPublicacao = Convert.ToDateTime(row["DataPublicacao"]);
+
+                // Criar o HTML do card para cada artigo e adicionar ao InnerHtml
+                string cardHtml = $@"
+            <div class='card bg-light mb-3 custom-card'>
+                <div class='card-body'>
+                    <h5 class='card-title'>{titulo}</h5>
+                    <p class='card-text'>Publicado em: {dataPublicacao.ToShortDateString()}</p>
+                    <a href='PaginaArtigo.aspx?id={artigoId}' class='btn btn-primary'>Ver</a>
+                </div>
+            </div>";
+
+                CardsContainer.InnerHtml += cardHtml;
+            }
+
+            CardsContainer.Attributes["class"] = "d-flex justify-content-center flex-column align-items-center";
         }//--------------------------------------------------------
     }
 }

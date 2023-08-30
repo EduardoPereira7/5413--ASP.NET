@@ -2,6 +2,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <style>
+    .custom-card {
+        width: 50vw;
+        height: auto;
+    }
+    </style>
+
     <h3 class="text-center">
         <asp:TextBox ID="TextBox1" runat="server" Font-Size="Small" Height="23px" Width="167px"></asp:TextBox>
         <asp:Button ID="btn_PesquisarPalavra" runat="server" Font-Bold="True" Font-Size="Small" Text="PESQUISAR" />
@@ -18,6 +26,9 @@
         </asp:DropDownList>
         <asp:Button ID="btn_PesquizarData" runat="server" OnClick="btn_Pesquizar_Click" Text="PESQUISAR" Font-Bold="True" Font-Size="Small" />
         <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:ListBox ID="List_ResultadosPesquisa" runat="server" Height="372px" Width="556px"></asp:ListBox>
     </p>
+    
+    <div id="CardsContainer" runat="server" class="d-flex justify-content-center flex-column align-items-center">
+        <!-- Artigos aqui -->
+    </div>
 </asp:Content>
