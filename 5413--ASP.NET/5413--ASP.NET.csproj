@@ -73,6 +73,7 @@
     <Content Include="UI\index.aspx" />
     <Content Include="UI\Login.aspx" />
     <Content Include="UI\Logout.aspx" />
+    <Content Include="UI\pesquisa.aspx" />
     <Content Include="UI\SignUp.aspx" />
     <Content Include="UI\UserDashboard.aspx" />
     <Content Include="Web.config" />
@@ -134,6 +135,13 @@
     </Compile>
     <Compile Include="UI\Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\pesquisa.aspx.cs">
+      <DependentUpon>pesquisa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\pesquisa.aspx.designer.cs">
+      <DependentUpon>pesquisa.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\SignUp.aspx.cs">
       <DependentUpon>SignUp.aspx</DependentUpon>
