@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="UI\AdminDashboard.aspx" />
     <Content Include="UI\CriarArtigo.aspx" />
+    <Content Include="UI\EditarArtigo.aspx" />
     <Content Include="UI\editarUtilizador.aspx" />
     <Content Include="UI\index.aspx" />
     <Content Include="UI\Login.aspx" />
@@ -107,6 +108,13 @@
     </Compile>
     <Compile Include="UI\CriarArtigo.aspx.designer.cs">
       <DependentUpon>CriarArtigo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EditarArtigo.aspx.cs">
+      <DependentUpon>EditarArtigo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\EditarArtigo.aspx.designer.cs">
+      <DependentUpon>EditarArtigo.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\editarUtilizador.aspx.cs">
       <DependentUpon>editarUtilizador.aspx</DependentUpon>

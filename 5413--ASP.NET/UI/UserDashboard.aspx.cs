@@ -53,8 +53,10 @@ namespace _5413__ASP.NET.UI
 
         protected void btnEditar_Click(object sender, EventArgs e)
         {
-           
-            
+            Button btnEditar = (Button)sender;
+            int artigoId = Convert.ToInt32(btnEditar.CommandArgument);
+
+            Response.Redirect($"EditarArtigo.aspx?id={artigoId}");
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)
