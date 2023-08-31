@@ -36,7 +36,7 @@ namespace _5413__ASP.NET.UI
 
 
             List<int> meses = new List<int>();
-            for (int mes = 0; mes <= 12; mes++)
+            for (int mes = 1; mes <= 12; mes++)
                 meses.Add(mes);
             DD_Mes.DataSource = meses;
             DD_Mes.DataBind();
@@ -60,13 +60,13 @@ namespace _5413__ASP.NET.UI
 
                 // Criar o HTML do card para cada artigo e adicionar ao InnerHtml
                 string cardHtml = $@"
-            <div class='card bg-light mb-3 custom-card'>
-                <div class='card-body'>
-                    <h5 class='card-title'>{titulo}</h5>
-                    <p class='card-text'>Publicado em: {dataPublicacao.ToShortDateString()}</p>
-                    <a href='PaginaArtigo.aspx?id={artigoId}' class='btn btn-primary'>Ver</a>
-                </div>
-            </div>";
+                    <div class='card bg-light mb-3 custom-card'>
+                        <div class='card-body'>
+                            <h5 class='card-title'>{titulo}</h5>
+                            <p class='card-text'>Publicado em: {dataPublicacao.ToShortDateString()}</p>
+                            <a href='PaginaArtigo.aspx?id={artigoId}' class='btn btn-primary'>Ver</a>
+                        </div>
+                    </div>";
 
                 CardsContainer.InnerHtml += cardHtml;
             }
