@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -37,10 +38,26 @@ namespace _5413__ASP.NET.UI
             string counteudo = row["Conteudo"].ToString();
             string acessibilidade = row["Acessibilidade"].ToString();
 
+
+
             if (acessibilidade == "False" && Session["Utilizador"] == null)
                 L_Restrito.Visible = true;
             else
-                divArtigo.InnerText = counteudo;
+                encherDiv(counteudo);
+        }//----------------------------------------------------------------------------
+
+        protected void encherDiv(string text)
+        {
+            string[] paragraphs = text.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+
+
+            foreach (string paragraph in paragraphs)
+            {
+                divArtigo.InnerHtml += "<p>";
+                divArtigo.InnerHtml += paragraph;
+                divArtigo.InnerHtml += "</p>";
+            }
 
         }
     }
