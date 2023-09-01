@@ -61,7 +61,8 @@ namespace _5413__ASP.NET.UI
                 cardsHtml.Append("</div>");
 
                 
-                LiteralControl cardsLiteral = new LiteralControl(cardsHtml.ToString());
+                LiteralControl cardsLiteral = new LiteralControl(cardsHtml.ToString()); 
+                //LiteralControl - Representa os elementos HTML, texto e quaisquer outras cadeias de caracteres
                 cardsContainer.Controls.Add(cardsLiteral);
             }
         }//--------------------------------------------------------
