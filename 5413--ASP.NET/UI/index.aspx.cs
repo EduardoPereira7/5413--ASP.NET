@@ -17,19 +17,19 @@ namespace _5413__ASP.NET.UI
         {
             if (!IsPostBack)
             {
-                int numCardsPerRow = 2; // Número de cards por linha
+                int numCardsPerRow = 2; 
 
                 ArtigoBLL artigoBLL = new ArtigoBLL();
-                DataSet dataSet = artigoBLL.ObterTodosOsArtigos(); // Substitua 'ano' e 'mes' pelos valores desejados
+                DataSet dataSet = artigoBLL.ObterTodosOsArtigos();
 
                 StringBuilder cardsHtml = new StringBuilder();
-                cardsHtml.Append("<div class='row'>"); // Abre a primeira linha
+                cardsHtml.Append("<div class='row'>"); 
 
                 int cardCounter = 0;
 
                 foreach (DataRow row in dataSet.Tables[0].Rows)
                 {
-                    // Se o contador de cards atingir o número desejado por linha, fecha a linha e abre uma nova
+                    
                     if (cardCounter == numCardsPerRow)
                     {
                         cardsHtml.Append("</div><div class='row'>");
@@ -58,11 +58,11 @@ namespace _5413__ASP.NET.UI
                     cardCounter++;
                 }
 
-                cardsHtml.Append("</div>"); // Fecha a última linha
+                cardsHtml.Append("</div>");
 
-                // Adicionar os cards ao LiteralControl
+                
                 LiteralControl cardsLiteral = new LiteralControl(cardsHtml.ToString());
-                cardsContainer.Controls.Add(cardsLiteral); // CardsContainer é um controle de conteúdo em sua página
+                cardsContainer.Controls.Add(cardsLiteral);
             }
         }//--------------------------------------------------------
 
