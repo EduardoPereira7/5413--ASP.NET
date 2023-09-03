@@ -21,7 +21,7 @@
         <asp:DropDownList ID="ddlCategoria" runat="server" CssClass="form-control"></asp:DropDownList>
     </div>
     <div class="form-group">
-        <asp:CheckBox ID="chkAcessibilidade" runat="server" Text="Apenas utilizadores registrados podem visualizar" />
+        <asp:CheckBox ID="chkAcessibilidade" runat="server" Text="Apenas utilizadores registados podem visualizar" />
     </div>
          <asp:Button ID="btnEditarArtigo" runat="server" Text="Editar Artigo" CssClass="btn btn-primary" OnClick="btnEditarArtigo_Click" />
          <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-primary" OnClick="btnCancelar_Click" />

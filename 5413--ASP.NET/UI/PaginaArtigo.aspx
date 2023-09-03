@@ -2,12 +2,15 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <div class="container mt-4 border rounded">   
     <div class="text-center">
         <br />
-        <asp:Label ID="L_Titulo" runat="server" Font-Bold="True" Font-Size="Medium" Text="Titulo"></asp:Label>
+        <asp:Label ID="L_Titulo" runat="server" Font-Bold="True" Font-Size="Large" Text="Titulo"></asp:Label>
         <br />        
+        <br /> 
         <asp:Label ID="L_SubTitulo" runat="server" Font-Bold="True" Font-Size="Small" Text="SubTitulo"></asp:Label>
+        <br />
+        <br />
         <br />
         <asp:Label ID="L_Restrito" runat="server" Font-Bold="True" Font-Size="Medium" ForeColor="Red" Text="Acesso Restrito a Utilizadores Registados" Visible="False"></asp:Label>
         
@@ -15,5 +18,6 @@
 
     <div id="divArtigo" class="p-5 text-justify" runat="server">
     </div>
+        </div>
 
 </asp:Content>
