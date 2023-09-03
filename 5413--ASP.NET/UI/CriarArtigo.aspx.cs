@@ -42,7 +42,7 @@ namespace _5413__ASP.NET.UI
             userId = user.Id;
             int utilizadorId = user.Id;
 
-            bool acessibilidade = chkAcessibilidade.Checked ? true : false;
+            bool acessibilidade = chkAcessibilidade.Checked ? false : true;
 
 
             BLL.ArtigoBLL artigoBLL = new BLL.ArtigoBLL();

@@ -11,61 +11,43 @@ namespace _5413__ASP.NET.UI
 {
 
 
-    public partial class pesquisa1
+    public partial class PaginaArtigo
     {
 
         /// <summary>
-        /// TextBox1 control.
+        /// L_Titulo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.Label L_Titulo;
 
         /// <summary>
-        /// btn_PesquisarPalavra control.
+        /// L_SubTitulo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_PesquisarPalavra;
+        protected global::System.Web.UI.WebControls.Label L_SubTitulo;
 
         /// <summary>
-        /// DD_Anos control.
+        /// L_Restrito control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DD_Anos;
+        protected global::System.Web.UI.WebControls.Label L_Restrito;
 
         /// <summary>
-        /// DD_Mes control.
+        /// divArtigo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DD_Mes;
-
-        /// <summary>
-        /// btn_PesquizarData control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_PesquizarData;
-
-        /// <summary>
-        /// CardsContainer control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CardsContainer;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divArtigo;
     }
 }

@@ -85,7 +85,7 @@ namespace _5413__ASP.NET.UI
             Regex regex = new Regex(pattern);
             // Use the Regex object to match the email
             if (!regex.IsMatch(email))
-                return "invalido";
+                return "Email invalido, ";
 
             BLL.UtilizadorBLL b = new BLL.UtilizadorBLL();
 

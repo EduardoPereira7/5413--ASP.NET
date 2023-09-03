@@ -22,7 +22,19 @@ namespace _5413__ASP.NET
                     SignUpListItem.Visible = false;
                     LogOutListItem.Visible = true;
                     UserNameListItem.Visible = true;
+                    dashboard.Visible = true;
                     UserName.InnerHtml = "Olá, " + user.Nome + "!";
+
+                    if (!user.Admin)
+                    {
+                        dashboard.HRef = "~/UI/UserDashboard.aspx";
+                        UserName.Attributes["href"] = "~/UI/UserDashboard.aspx";
+                    }
+                    else
+                    {
+                        dashboard.HRef = "~/UI/AdminDashboard.aspx";
+                        UserName.Attributes["href"] = "~/UI/AdminDashboard.aspx";
+                    }
                 }
                 else
                 {
@@ -30,6 +42,7 @@ namespace _5413__ASP.NET
                     SignUpListItem.Visible = true;
                     LogOutListItem.Visible = false;
                     UserNameListItem.Visible = false;
+                    dashboard.Visible = false;
                 }
             }
         }

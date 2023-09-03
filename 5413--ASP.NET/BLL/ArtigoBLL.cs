@@ -20,6 +20,12 @@ namespace _5413__ASP.NET.BLL
             DAL.DAL dal = new DAL.DAL();
             return dal.obterDs(sqlSelect);
         }
+        public DataSet ObterTodosOsArtigos()
+        {
+            string sqlSelect = $"SELECT * FROM Artigos";
+            DAL.DAL dal = new DAL.DAL();
+            return dal.obterDs(sqlSelect);
+        }
         public void eliminarArtigo(int artigoID)
         {
             string sql = "DELETE FROM Artigos WHERE Id = " + artigoID;
@@ -36,17 +42,6 @@ namespace _5413__ASP.NET.BLL
             DAL.DAL dal = new DAL.DAL();
             return dal.crud(sqlInsert);
         }
-
-
-
-
-
-
-
-
-
-
-
         public DataSet ObterArtigo(int artigoID)
         {
             string sql = $"SELECT A.*, C.Nome AS NomeCategoria " +
@@ -70,5 +65,19 @@ namespace _5413__ASP.NET.BLL
             return dal.crud(sqlUpdate);
         }
 
+
+
+        public DataSet ObterArtigosPorData(int ano, int mes)
+        {
+            string sqlSelect = $@"
+            SELECT A.*, C.Nome AS NomeCategoria
+            FROM Artigos AS A
+            INNER JOIN Categorias AS C ON A.CategoriaId = C.Id
+            WHERE YEAR(A.DataPublicacao) = {ano} AND MONTH(A.DataPublicacao) = {mes}
+            ";
+
+            DAL.DAL dal = new DAL.DAL();
+            return dal.obterDs(sqlSelect);
+        }
     }
 }
