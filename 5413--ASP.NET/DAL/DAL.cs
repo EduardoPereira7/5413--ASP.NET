@@ -9,7 +9,7 @@ namespace _5413__ASP.NET.DAL
 {
     public class DAL
     {
-        private string connString = @"Data Source=MSIGAMINGPLUS;Initial Catalog=blog;Integrated Security=True;";
+        private string connString = @"Data Source=//;Initial Catalog=blog;Integrated Security=True;";
 
         public bool crud(string sql)
         {

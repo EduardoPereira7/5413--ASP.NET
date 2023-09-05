@@ -65,8 +65,6 @@ namespace _5413__ASP.NET.BLL
             return dal.crud(sqlUpdate);
         }
 
-
-
         public DataSet ObterArtigosPorData(int ano, int mes)
         {
             string sqlSelect = $@"
@@ -88,6 +86,4 @@ namespace _5413__ASP.NET.BLL
             return dal.obterDs(sqlSelect);
         }
     }
-
-
 }

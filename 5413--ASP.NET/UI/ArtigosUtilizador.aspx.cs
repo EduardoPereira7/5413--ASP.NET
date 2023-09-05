@@ -12,14 +12,17 @@ namespace _5413__ASP.NET.UI
 {
     public partial class ArtigosUtilizador : System.Web.UI.Page
     {
+        protected int userId;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 if (Request.QueryString["userId"] != null)
                 {
-                    int userId = Convert.ToInt32(Request.QueryString["userId"]);
-                    h1Titulo.InnerText = "Artigos do Utilizador ID:" + userId.ToString();
+                    userId = Convert.ToInt32(Request.QueryString["userId"]);
+                    string nomeUtilizador = ObterNomeUtilizador(userId);
+                    h1Titulo.InnerText = "Artigos do Utilizador: ";
+                    h3NomeUtilizador.InnerText = nomeUtilizador + " (ID: " + userId + ")";
                     CarregarArtigosDoUtilizador(userId);
                 }
                 else
@@ -31,63 +34,43 @@ namespace _5413__ASP.NET.UI
 
         protected void CarregarArtigosDoUtilizador(int userId)
         {
+            rptArtigos.DataSource = null;
+            rptArtigos.DataBind();
             BLL.ArtigoBLL artigoBLL = new BLL.ArtigoBLL();
             DataSet ds = artigoBLL.ObterArtigosDoUtilizador(userId);
 
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
-                StringBuilder cardsHtml = new StringBuilder();
-                int artigosPorLinha = 2;
-                int contador = 0;
-
-                foreach (DataRow row in ds.Tables[0].Rows)
-                {
-                    int id = Convert.ToInt32(row["Id"]);
-                    string titulo = row["Titulo"].ToString();
-                    string subtitulo = row["Subtitulo"].ToString();
-                    DateTime dataPublicacao = Convert.ToDateTime(row["DataPublicacao"]);
-
-                    //Se o contador for zero começa uma nova linha
-                    if (contador == 0)
-                    {
-                        cardsHtml.Append("<div class='row'>");
-                    }
-
-                    cardsHtml.Append($@"
-                <div class='col-md-6'>
-                    <a href='PaginaArtigo.aspx?id={id}' class='card-link card-link-custom'>
-                        <div class='card mb-3'>
-                            <div class='card-header'>{titulo}</div>
-                            <div class='card-body'>
-                                <h5 class='card-title'>{subtitulo}</h5>
-                                <p class='card-text'>Publicado em: {dataPublicacao.ToShortDateString()}</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            ");
-
-                    //Se atingir o número de artigos por linha
-                    if (contador == artigosPorLinha - 1)
-                    {
-                        cardsHtml.Append("</div>"); //Fecha a linha
-                        contador = 0; //Reinicia o contador
-                    }
-                    else
-                    {
-                        contador++;
-                    }
-                }
-                if (contador != 0)
-                {
-                    cardsHtml.Append("</div>");
-                }
-                cardsContainer.InnerHtml = cardsHtml.ToString();
+                rptArtigos.DataSource = ds.Tables[0];
+                rptArtigos.DataBind();
+                mensagemArtigos.Visible = false;
             }
             else
             {
-                cardsContainer.InnerHtml = "<p>Não há artigos para exibir.</p>";
+                mensagemArtigos.Visible = true;
             }
+        }
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            int artigoID = Convert.ToInt32(((Button)sender).CommandArgument);
+            BLL.ArtigoBLL artigoBLL = new BLL.ArtigoBLL();
+            artigoBLL.eliminarArtigo(artigoID);
+            userId = Convert.ToInt32(Request.QueryString["userId"]);
+            CarregarArtigosDoUtilizador(userId);
+        }
+
+        private string ObterNomeUtilizador(int userId)
+        {
+            BLL.UtilizadorBLL utilizadorBLL = new BLL.UtilizadorBLL();
+            DataSet ds = utilizadorBLL.obterUtilizador(userId);
+
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                DataRow row = ds.Tables[0].Rows[0];
+                string nome = row["Nome"].ToString();
+                return nome;
+            }
+            return "Utilizador Desconhecido";
         }
     }
 }

@@ -42,19 +42,19 @@ namespace _5413__ASP.NET.UI
                     DateTime dataPublicacao = Convert.ToDateTime(row["DataPublicacao"]);
 
                     cardsHtml.Append($@"
-                     <div class='col-md-6'>
-                        <a href='PaginaArtigo.aspx?id={id}' class='card-link card-link-custom'>
+                        <div class='col-md-6'>
                             <div class='card mb-3'>
                                 <div class='card-header'>{titulo}</div>
-                                <div class='card-body'>
-                                    <h5 class='card-title'>{Subtitulo}</h5>
-                                    <p class='card-text'>Publicado em: {dataPublicacao.ToShortDateString()}</p>
+                                    <div class='card-body'>
+                                        <h5 class='card-title'>{Subtitulo}</h5>
+                                        <p class='card-text'>Publicado em: {dataPublicacao.ToShortDateString()}</p>
+                                    </div>
+                                    <div class='card-footer'>
+                                    <a href='PaginaArtigo.aspx?id={id}' class='btn btn-primary'>Ver</a>
                                 </div>
                             </div>
-                        </a>
-                    </div>
-                    ");
-
+                        </div>
+                        ");
                     cardCounter++;
                 }
 
