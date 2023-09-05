@@ -79,5 +79,15 @@ namespace _5413__ASP.NET.BLL
             DAL.DAL dal = new DAL.DAL();
             return dal.obterDs(sqlSelect);
         }
+
+        public DataSet ObterArtigosPorPalavra(string palavra)
+        {
+            string sqlSelect = $@" select * from artigos where conteudo like '%" + palavra + "%';";
+
+            DAL.DAL dal = new DAL.DAL();
+            return dal.obterDs(sqlSelect);
+        }
     }
+
+
 }

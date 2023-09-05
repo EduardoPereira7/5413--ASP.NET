@@ -15,13 +15,13 @@ namespace _5413__ASP.NET.UI
     {
 
         /// <summary>
-        /// TextBox1 control.
+        /// T_pesquisa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox T_pesquisa;
 
         /// <summary>
         /// btn_PesquisarPalavra control.
@@ -31,6 +31,15 @@ namespace _5413__ASP.NET.UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_PesquisarPalavra;
+
+        /// <summary>
+        /// L_alert control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label L_alert;
 
         /// <summary>
         /// DD_Anos control.

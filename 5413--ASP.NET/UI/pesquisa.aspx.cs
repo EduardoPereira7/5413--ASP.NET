@@ -44,13 +44,50 @@ namespace _5413__ASP.NET.UI
 
         protected void btn_Pesquizar_Click(object sender, EventArgs e)
         {
+
+            L_alert.Visible = false;
             int anoSelecionado = Convert.ToInt32(DD_Anos.SelectedValue);
             int mesSelecionado = Convert.ToInt32(DD_Mes.SelectedValue);
 
             ArtigoBLL artigoBLL = new ArtigoBLL();
             DataSet dataSet = artigoBLL.ObterArtigosPorData(anoSelecionado, mesSelecionado);
 
-            CardsContainer.InnerHtml = "";
+            afixaArtigos(dataSet);
+        }//--------------------------------------------------------
+
+        protected void btn_PesquisarPalavra_Click(object sender, EventArgs e)
+        {
+            string pesquisa = T_pesquisa.Text;
+            L_alert.Visible = false;
+
+            if (pesquisa.Length < 3)
+            {
+                L_alert.Visible = true;
+                L_alert.Text = "São necessarias mais de 2 letras";
+            }
+            else
+            {
+
+                ArtigoBLL artigoBLL = new ArtigoBLL();
+                DataSet dataSet = artigoBLL.ObterArtigosPorPalavra(pesquisa);
+
+
+
+                afixaArtigos(dataSet);
+
+            }
+        }//--------------------------------------------------------
+
+        protected void afixaArtigos(DataSet dataSet)
+        {
+
+            if (dataSet.Tables.Count == 0 || dataSet.Tables[0].Rows.Count == 0)
+            {
+                L_alert.Visible = true;
+                CardsContainer.InnerHtml = "";
+                L_alert.Text = "Não foram encontrados resultados";
+                return;
+            }
 
             foreach (DataRow row in dataSet.Tables[0].Rows)
             {
