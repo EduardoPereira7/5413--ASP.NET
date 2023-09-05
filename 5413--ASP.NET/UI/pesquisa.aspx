@@ -11,9 +11,12 @@
     </style>
 
     <h3 class="text-center">
-        <asp:TextBox ID="TextBox1" runat="server" Font-Size="Small" Height="23px" Width="167px"></asp:TextBox>
-        <asp:Button ID="btn_PesquisarPalavra" runat="server" Font-Bold="True" Font-Size="Small" Text="PESQUISAR" CssClass="btn-primary" />
+        <asp:TextBox ID="T_pesquisa" runat="server" Font-Size="Small" Height="23px" Width="167px"></asp:TextBox>
+        <asp:Button ID="btn_PesquisarPalavra" runat="server" Font-Bold="True" Font-Size="Small" Text="PESQUISAR" CssClass="btn-primary" OnClick="btn_PesquisarPalavra_Click" />
     </h3>
+    <p class="text-center">
+        <asp:Label ID="L_alert" runat="server" Font-Bold="True" ForeColor="#CC0000" Text="Label" Visible="False"></asp:Label>
+    </p>
     <hr />
     <hr />
     <p class="text-center">
