@@ -50,6 +50,7 @@
             <ItemTemplate>
                 <asp:Button ID="btnEdit" runat="server" Text="Editar" OnClick="btnEditar" CommandArgument='<%# Eval("Id") %>' />                
                 <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("Id") %>' />
+                <asp:Button ID="btnVerArtigos" runat="server" Text="Ver artigos" OnClick="btnVerArtigos_Click" CommandArgument='<%# Eval("Id") %>' />
             </ItemTemplate>
                     <HeaderStyle HorizontalAlign="Center" />
         </asp:TemplateField>
