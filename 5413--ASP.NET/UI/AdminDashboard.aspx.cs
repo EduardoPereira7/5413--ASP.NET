@@ -116,5 +116,12 @@ namespace _5413__ASP.NET.UI
         {
         }//-----------------------------------------------------------------------------------------
 
+        protected void btnVerArtigos_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int userId = Convert.ToInt32(btn.CommandArgument);
+
+            Response.Redirect("ArtigosUtilizador.aspx?userId=" + userId);
+        }
     }
 }
