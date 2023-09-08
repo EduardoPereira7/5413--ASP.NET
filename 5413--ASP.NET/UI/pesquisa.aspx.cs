@@ -91,18 +91,25 @@ namespace _5413__ASP.NET.UI
 
             foreach (DataRow row in dataSet.Tables[0].Rows)
             {
-                int artigoId = Convert.ToInt32(row["Id"]);
+                string id = row["Id"].ToString();
                 string titulo = row["Titulo"].ToString();
+                string Subtitulo = row["Subtitulo"].ToString();
+                string likes = row["likes"].ToString();
                 DateTime dataPublicacao = Convert.ToDateTime(row["DataPublicacao"]);
 
                 // Criar o HTML do card para cada artigo e adicionar ao InnerHtml
                 string cardHtml = $@"
                     <div class='card bg-light mb-3 custom-card'>
-                        <div class='card-body'>
-                            <h5 class='card-title'>{titulo}</h5>
-                            <p class='card-text'>Publicado em: {dataPublicacao.ToShortDateString()}</p>
-                            <a href='PaginaArtigo.aspx?id={artigoId}' class='btn btn-primary'>Ver</a>
-                        </div>
+                            <a href='PaginaArtigo.aspx?id={id}' class='card-link card-link-custom'>
+                            <div class='card mb-3' style='border: 2px solid #000;'>
+                                <div class='card-header' style='font-weight: bold; background-color: #ccc;'>{titulo}</div>
+                                <div class='card-body' style='color: #213555;'>
+                                    <h6 class='card-title'>{Subtitulo}</h6>
+                                    <p class='card-text'>Publicado em: {dataPublicacao.ToShortDateString()}</p>
+                                    <p class='card-text'>LIKES: {likes}</p>
+                                </div>
+                            </div>
+                            <a>
                     </div>";
 
                 CardsContainer.InnerHtml += cardHtml;

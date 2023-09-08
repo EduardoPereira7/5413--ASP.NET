@@ -5,11 +5,12 @@
     <div class="container mt-4 border rounded">   
     <div class="text-center">
         <br />
-        <asp:Label ID="L_Titulo" runat="server" Font-Bold="True" Font-Size="Large" Text="Titulo"></asp:Label>
+        <br />
+        <br />
+        <asp:Label ID="L_Titulo" runat="server" Font-Bold="True" Font-Size="X-Large" Text="Titulo"></asp:Label>
+        <br />
         <br /> 
         <asp:Label ID="L_SubTitulo" runat="server" Font-Bold="False" Font-Size="Medium" Text="SubTitulo"></asp:Label>
-        <br />
-        <br />
         <br />
         <asp:Label ID="L_Restrito" runat="server" Font-Bold="True" Font-Size="Medium" ForeColor="Red" Text="Acesso Restrito a Utilizadores Registados" Visible="False"></asp:Label>
         
