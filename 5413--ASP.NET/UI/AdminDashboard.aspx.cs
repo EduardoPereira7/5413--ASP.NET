@@ -123,5 +123,15 @@ namespace _5413__ASP.NET.UI
 
             Response.Redirect("ArtigosUtilizador.aspx?userId=" + userId);
         }
+
+        protected void criarArtigo_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("CriarArtigo.aspx");
+        }
+
+        protected void gerirMeusArtigos_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("UserDashboard.aspx");
+        }
     }
 }

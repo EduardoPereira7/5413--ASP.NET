@@ -9,7 +9,14 @@
                 <asp:Label ID="L_Error" runat="server" ForeColor="Red" Text="ERROR" Visible="False"></asp:Label>
             </p>
     </div>
-
+        <div class="container d-flex mt-5">
+            <div class="col-md-6">
+                <asp:Button ID="criarArtigo" class="btn btn-primary btn-block" runat="server" Text="Criar Artigo" OnClick="criarArtigo_Click" />
+            </div>
+            <div class="col-md-6">
+                <asp:Button ID="gerirMeusArtigos" class="btn btn-primary btn-block" runat="server" Text="Gerir os Meus Artigos" OnClick="gerirMeusArtigos_Click" />
+            </div>
+        </div>
     <div class="text-left mt-5 mb-3">
         <h2>Pendentes de Verificação</h2>
     </div>

@@ -22,7 +22,7 @@ namespace _5413__ASP.NET.UI
                     userId = Convert.ToInt32(Request.QueryString["userId"]);
                     string nomeUtilizador = ObterNomeUtilizador(userId);
                     h1Titulo.InnerText = "Artigos do Utilizador: ";
-                    h3NomeUtilizador.InnerText = nomeUtilizador + " (ID: " + userId + ")";
+                    h3NomeUtilizador.InnerText = nomeUtilizador;
                     CarregarArtigosDoUtilizador(userId);
                 }
                 else
