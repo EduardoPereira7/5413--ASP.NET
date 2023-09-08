@@ -70,9 +70,7 @@ namespace _5413__ASP.NET.UI
 
                 ArtigoBLL artigoBLL = new ArtigoBLL();
                 DataSet dataSet = artigoBLL.ObterArtigosPorPalavra(pesquisa);
-
-
-
+                T_pesquisa.Text = string.Empty;
                 afixaArtigos(dataSet);
 
             }
@@ -80,7 +78,7 @@ namespace _5413__ASP.NET.UI
 
         protected void afixaArtigos(DataSet dataSet)
         {
-
+            CardsContainer.InnerHtml = string.Empty;
             if (dataSet.Tables.Count == 0 || dataSet.Tables[0].Rows.Count == 0)
             {
                 L_alert.Visible = true;
