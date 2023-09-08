@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -19,29 +20,33 @@ namespace _5413__ASP.NET.BLL
 
             DAL.DAL dal = new DAL.DAL();
             return dal.obterDs(sqlSelect);
-        }
+        }//-------------------------------------------------------
+
         public DataSet ObterTodosOsArtigos()
         {
             string sqlSelect = $"SELECT * FROM Artigos";
             DAL.DAL dal = new DAL.DAL();
             return dal.obterDs(sqlSelect);
-        }
+        }//-------------------------------------------------------
+
         public void eliminarArtigo(int artigoID)
         {
             string sql = "DELETE FROM Artigos WHERE Id = " + artigoID;
             DAL.DAL dal = new DAL.DAL();
             dal.crud(sql);
-        }
+        }//-------------------------------------------------------
+
         public bool CriarArtigo(string titulo, string subtitulo, string conteudo, DateTime dataPublicacao, bool acessibilidade, int categoriaId, int utilizadorId)
         {
             string sqlInsert = $@"
-            INSERT INTO Artigos (Titulo, Subtitulo, Conteudo, DataPublicacao, Acessibilidade, CategoriaId, UtilizadorId)
-            VALUES ('{titulo}', '{subtitulo}', '{conteudo}', '{dataPublicacao.ToString("yyyy-MM-dd HH:mm:ss")}', '{(acessibilidade ? "1" : "0")}', {categoriaId}, {utilizadorId})
+            INSERT INTO Artigos (Titulo, Subtitulo, Conteudo, DataPublicacao, Acessibilidade, CategoriaId, UtilizadorId,likes)
+            VALUES ('{titulo}', '{subtitulo}', '{conteudo}', '{dataPublicacao.ToString("yyyy-MM-dd HH:mm:ss")}', '{(acessibilidade ? "1" : "0")}', {categoriaId}, {utilizadorId} , 0)
             ";
 
             DAL.DAL dal = new DAL.DAL();
             return dal.crud(sqlInsert);
-        }
+        }//-------------------------------------------------------
+
         public DataSet ObterArtigo(int artigoID)
         {
             string sql = $"SELECT A.*, C.Nome AS NomeCategoria " +
@@ -50,7 +55,8 @@ namespace _5413__ASP.NET.BLL
                  $"WHERE A.Id = {artigoID}";
             DAL.DAL dal = new DAL.DAL();
             return dal.obterDs(sql);
-        }
+        }//-------------------------------------------------------
+
         public bool editarArtigo(int artigoId, string novoTitulo, string novoSubtitulo, string novoConteudo, int novaCategoriaId, bool novaAcessibilidade)
         {
             string sqlUpdate = $@"UPDATE Artigos
@@ -63,9 +69,7 @@ namespace _5413__ASP.NET.BLL
 
             DAL.DAL dal = new DAL.DAL();
             return dal.crud(sqlUpdate);
-        }
-
-
+        }//-------------------------------------------------------
 
         public DataSet ObterArtigosPorData(int ano, int mes)
         {
@@ -78,7 +82,7 @@ namespace _5413__ASP.NET.BLL
 
             DAL.DAL dal = new DAL.DAL();
             return dal.obterDs(sqlSelect);
-        }
+        }//-------------------------------------------------------
 
         public DataSet ObterArtigosPorPalavra(string palavra)
         {
@@ -86,8 +90,47 @@ namespace _5413__ASP.NET.BLL
 
             DAL.DAL dal = new DAL.DAL();
             return dal.obterDs(sqlSelect);
-        }
+        }//-------------------------------------------------------
+
+        public int Liked(int artigo, int user)
+        {
+            string sqlSelect = "SELECT * FROM likes WHERE ArtigoId = " + artigo
+                + "AND UtilizadorId = " + user
+                + " AND liked = 1;";
+
+            DAL.DAL dal = new DAL.DAL();
+            SqlConnection conn = new SqlConnection(dal.getconnString());
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = sqlSelect;
+            cmd.Connection = conn;
+            object result = cmd.ExecuteScalar();
+            int rowCount = Convert.ToInt32(result);
+
+            conn.Close();
+            return rowCount;
+        }//-------------------------------------------------------
+        public void likeArtigo(int artigo, int user)
+        {
+
+            DAL.DAL dal = new DAL.DAL();
+            SqlConnection conn = new SqlConnection(dal.getconnString());
+            conn.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.Connection = conn;
+
+            string sqlSelect = "insert into likes  values (" + user + "," + artigo + ",1);";
+            cmd.CommandText = sqlSelect;            
+            cmd.ExecuteNonQuery();
+
+            sqlSelect = "UPDATE artigos SET [Likes] = [Likes] + 1 WHERE [Id] = " + artigo + ";";
+            cmd.CommandText = sqlSelect;
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }//-------------------------------------------------------
     }
-
-
 }

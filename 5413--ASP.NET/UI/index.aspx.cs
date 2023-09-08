@@ -39,6 +39,7 @@ namespace _5413__ASP.NET.UI
                     string id = row["Id"].ToString();
                     string titulo = row["Titulo"].ToString();
                     string Subtitulo = row["Subtitulo"].ToString();
+                    string likes = row["likes"].ToString();
                     DateTime dataPublicacao = Convert.ToDateTime(row["DataPublicacao"]);
 
                     cardsHtml.Append($@"
@@ -49,6 +50,7 @@ namespace _5413__ASP.NET.UI
                                 <div class='card-body'>
                                     <h5 class='card-title'>{Subtitulo}</h5>
                                     <p class='card-text'>Publicado em: {dataPublicacao.ToShortDateString()}</p>
+                                    <p class='card-text'>LIKES: {likes}</p>
                                 </div>
                             </div>
                         </a>
