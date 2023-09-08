@@ -2,13 +2,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
-    <style>
-    .card-link-custom {
-        color: black; 
-        text-decoration: none;
-    }
-    </style>
 
     <div class="d-flex justify-content-center ">
         <div class="jumbotron jumbotron-fluid m-5" style="width:60vw">

@@ -43,8 +43,7 @@ namespace _5413__ASP.NET.UI
                     DateTime dataPublicacao = Convert.ToDateTime(row["DataPublicacao"]);
 
                     cardsHtml.Append($@"
-                     <div class='col-md-6'>
-                        <a href='PaginaArtigo.aspx?id={id}' class='card-link card-link-custom'>
+                        <div class='col-md-6'>
                             <div class='card mb-3'>
                                 <div class='card-header'>{titulo}</div>
                                 <div class='card-body'>
@@ -53,10 +52,8 @@ namespace _5413__ASP.NET.UI
                                     <p class='card-text'>LIKES: {likes}</p>
                                 </div>
                             </div>
-                        </a>
-                    </div>
-                    ");
-
+                        </div>
+                        ");
                     cardCounter++;
                 }
 
