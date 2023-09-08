@@ -3,13 +3,17 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-
+    <div class="container">
+        <div class="text-center mt-4 mb-5">
+        <h1 class="font-weight-bold">Dashboard</h1>
+    </div>
+        </div>
     <div class="container d-flex mt-5">
-            <div class="col-md-6">
+            <div id="divCriarArtigo" runat="server">
                 <asp:Button ID="criarArtigo" class="btn btn-primary btn-block" runat="server" Text="Criar Artigo" OnClick="criarArtigo_Click" />
             </div>
-            <div class="col-md-6">
-                <asp:Button ID="gerirMeusArtigos" class="btn btn-primary btn-block" runat="server" Text="Gerir os Meus Artigos" OnClick="gerirMeusArtigos_Click" />
+            <div id="divAdminDashboard" runat="server" class="col-md-6" Visible="false">
+                <asp:Button ID="btnAdminDashboard" class="btn btn-primary btn-block" runat="server" Text="Dashboard de Administrador" Visible="false" />
             </div>
         </div>
     <div class="container mt-5">

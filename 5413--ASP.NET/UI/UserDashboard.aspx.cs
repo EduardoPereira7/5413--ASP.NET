@@ -19,32 +19,36 @@ namespace _5413__ASP.NET.UI
                 Response.Redirect("Login.aspx");
                 return;
             }
+            else
+            {
+                Utilizador user = (Utilizador)Session["Utilizador"];
+                userId = user.Id;
+                carregarMeusArtigos();
+                if (user.Admin)
+                {
+                    divCriarArtigo.Attributes["class"] = "col-md-6";
+                    divAdminDashboard.Visible = true;
+                    btnAdminDashboard.Visible= true;
+                }
+                else
+                {
+                    divCriarArtigo.Attributes["class"] = "col-md-12";
+                }
+            }
         }
 
         protected void criarArtigo_Click(object sender, EventArgs e)
         {
             Response.Redirect("CriarArtigo.aspx");
         }
-
-        protected void gerirMeusArtigos_Click(object sender, EventArgs e)
-        {
-            secaoArtigos.Visible = true;
-            carregarMeusArtigos();
-        }
         protected void carregarMeusArtigos()
         {
-            Utilizador user = (Utilizador)Session["Utilizador"];
-
-            // Atribuir o ID do utilizador à variável userId
-            userId = user.Id;
-
-
             BLL.ArtigoBLL b = new BLL.ArtigoBLL();
             DataSet dsArtigos = b.ObterArtigosDoUtilizador(userId);
 
             RepeaterArtigos.DataSource = dsArtigos;
             RepeaterArtigos.DataBind();
-
+            secaoArtigos.Visible = true;
             if (dsArtigos.Tables[0].Rows.Count == 0)
             {
                 feedback.Visible = true;
@@ -64,7 +68,6 @@ namespace _5413__ASP.NET.UI
             Button btn = (Button)sender;
             int artigoId = Convert.ToInt32(btn.CommandArgument);
 
-            // Chamar um método na BLL para eliminar o utilizador com o userId
             BLL.ArtigoBLL b = new BLL.ArtigoBLL();
             b.eliminarArtigo(artigoId);
 

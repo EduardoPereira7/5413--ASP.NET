@@ -26,7 +26,6 @@
                 <asp:BoundField DataField="Id" HeaderText="ID" />
                 <asp:BoundField DataField="Nome" HeaderText="Nome" />
                 <asp:BoundField DataField="Email" HeaderText="Email" />
-                <%--<asp:BoundField DataField="Password" HeaderText="Password" />--%>
                 <asp:BoundField DataField="Verificado" HeaderText="Verificado" />
                 <asp:BoundField DataField="admin" HeaderText="Admin" >
                 <HeaderStyle HorizontalAlign="Center" />

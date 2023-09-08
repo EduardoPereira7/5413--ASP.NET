@@ -15,6 +15,15 @@ namespace _5413__ASP.NET.UI
     {
 
         /// <summary>
+        /// divCriarArtigo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCriarArtigo;
+
+        /// <summary>
         /// criarArtigo control.
         /// </summary>
         /// <remarks>
@@ -24,13 +33,22 @@ namespace _5413__ASP.NET.UI
         protected global::System.Web.UI.WebControls.Button criarArtigo;
 
         /// <summary>
-        /// gerirMeusArtigos control.
+        /// divAdminDashboard control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button gerirMeusArtigos;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAdminDashboard;
+
+        /// <summary>
+        /// btnAdminDashboard control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAdminDashboard;
 
         /// <summary>
         /// secaoArtigos control.
