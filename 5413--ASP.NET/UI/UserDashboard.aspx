@@ -13,7 +13,7 @@
                 <asp:Button ID="criarArtigo" class="btn btn-primary btn-block" runat="server" Text="Criar Artigo" OnClick="criarArtigo_Click" />
             </div>
             <div id="divAdminDashboard" runat="server" class="col-md-6" Visible="false">
-                <asp:Button ID="btnAdminDashboard" class="btn btn-primary btn-block" runat="server" Text="Dashboard de Administrador" Visible="false" />
+                <asp:Button ID="btnAdminDashboard" class="btn btn-primary btn-block" runat="server" Text="Dashboard de Administrador" Visible="false" OnClick="btnAdminDashboard_Click"/>
             </div>
         </div>
     <div class="container mt-5">

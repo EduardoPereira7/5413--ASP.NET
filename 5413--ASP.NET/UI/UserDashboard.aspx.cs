@@ -73,5 +73,10 @@ namespace _5413__ASP.NET.UI
 
             carregarMeusArtigos();
         }
+
+        protected void btnAdminDashboard_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminDashboard.aspx");
+        }
     }
 }
