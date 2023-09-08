@@ -73,9 +73,14 @@ namespace _5413__ASP.NET.BLL
 
         public void eliminarUtilizador(int userId)
         {
-            string sql = "DELETE FROM Utilizadores WHERE Id = " + userId;
-            DAL.DAL dal = new DAL.DAL();
-            dal.crud(sql);
+            BLL.ArtigoBLL a = new BLL.ArtigoBLL(); //caso exista artigos do user, estes devem ser eliminados antes de eliminar o user
+            //if (a.contaArtigos(userId)>0)
+            //{
+            //    a.eliminarArtigo(userId);
+            //}
+                string sql = "DELETE FROM Utilizadores WHERE Id = " + userId;
+                DAL.DAL dal = new DAL.DAL();
+                dal.crud(sql);
         }//-------------------------------------------------------------------------------------------------------------
 
         public int verSeEmailJaExiste(string email)
