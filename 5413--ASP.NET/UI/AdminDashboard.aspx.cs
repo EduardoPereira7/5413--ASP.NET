@@ -76,13 +76,15 @@ namespace _5413__ASP.NET.UI
             int userId = Convert.ToInt32(btn.CommandArgument);           
             
             BLL.UtilizadorBLL b = new BLL.UtilizadorBLL();
-            if(b.verSeAdmin(userId)<1 || b.contaAdmins()>1) //se não for Admin ou não for unico Admin
+            if (b.verSeAdmin(userId) < 1 || b.contaAdmins() > 1) //se não for Admin ou não for unico Admin
+            { 
                 b.eliminarUtilizador(userId);
+            }
             else
             {
                 L_Error.Visible = true;
                 L_Error.Text = "TEM DE HAVER UM ADMIN";
-                return ;
+                return;
             }                         
 
             preencherUtilizadoresNaoVerificados();
