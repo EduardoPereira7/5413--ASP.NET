@@ -132,18 +132,5 @@ namespace _5413__ASP.NET.BLL
 
             conn.Close();
         }//-------------------------------------------------------
-        public void eliminarArtigosUtilizador(int utilizadorId)
-        {
-            string sql = "DELETE FROM Artigos WHERE UtilizadorId = " + utilizadorId;
-            DAL.DAL dal = new DAL.DAL();
-            dal.crud(sql);
-        }//-------------------------------------------------------
-        public int contaArtigos(int utilizadorId)
-        {
-            string sql = "select count(*) FROM Artigos WHERE UtilizadorId = " + utilizadorId;
-            DAL.DAL dal = new DAL.DAL();
-            int rows = dal.countRows(sql);
-            return rows;
-        }//-------------------------------------------------------------------------------------------------------------
     }
 }
