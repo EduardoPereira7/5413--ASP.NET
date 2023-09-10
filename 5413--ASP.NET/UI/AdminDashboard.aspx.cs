@@ -42,7 +42,7 @@ namespace _5413__ASP.NET.UI
             DataSet ds = b.obterUtilizadores(verificado);
             gridView.DataSource = ds;
             gridView.AllowPaging = true;
-            gridView.PageSize = 10;
+            gridView.PageSize = 7;
             gridView.AutoGenerateColumns = false;
             gridView.DataBind();
         }//-----------------------------------------------------------------------------------------

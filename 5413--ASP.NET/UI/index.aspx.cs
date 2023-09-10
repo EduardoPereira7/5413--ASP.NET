@@ -30,7 +30,7 @@ namespace _5413__ASP.NET.UI
             ArtigoBLL artigoBLL = new ArtigoBLL();
             DataSet dataSet = artigoBLL.ObterTodosOsArtigos();
 
-            int artigosPorPagina = 5; //Nr. de artigos por pag
+            int artigosPorPagina = 4; //Nr. de artigos por pag
             int indexInicial = indexAtualPagina * artigosPorPagina;
 
             if (indexInicial >= 0 && indexInicial < dataSet.Tables[0].Rows.Count)
