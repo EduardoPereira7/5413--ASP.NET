@@ -9,7 +9,7 @@ namespace _5413__ASP.NET.DAL
 {
     public class DAL
     {
-        private string connString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=blog;Integrated Security=True;";
+        private string connString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=DB;Integrated Security=True;";
 
         public string getconnString()
         {
@@ -45,7 +45,7 @@ namespace _5413__ASP.NET.DAL
 
             conn.Close();
             return rowCount;
-        }//---------------------------------------------------------------------------------------
+        }//------------------------------------------------------------------------------
 
         public DataSet obterDs(string sqlSelect)
         {
@@ -58,8 +58,6 @@ namespace _5413__ASP.NET.DAL
 
             conn.Close();
             return ds;
-        }
-
-
+        }//------------------------------------------------------------------------------
     }
 }
