@@ -24,7 +24,7 @@ namespace _5413__ASP.NET.BLL
 
         public DataSet ObterTodosOsArtigos()
         {
-            string sqlSelect = $"SELECT * FROM Artigos";
+            string sqlSelect = $"SELECT * FROM Artigos ORDER BY DataPublicacao DESC";
             DAL.DAL dal = new DAL.DAL();
             return dal.obterDs(sqlSelect);
         }//-------------------------------------------------------
