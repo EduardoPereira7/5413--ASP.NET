@@ -30,7 +30,7 @@ namespace _5413__ASP.NET.UI
             ArtigoBLL artigoBLL = new ArtigoBLL();
             DataSet dataSet = artigoBLL.ObterTodosOsArtigos();
 
-            int artigosPorPagina = 5; //Nr. de artigos por pag
+            int artigosPorPagina = 4; //Nr. de artigos por pag
             int indexInicial = indexAtualPagina * artigosPorPagina;
 
             if (indexInicial >= 0 && indexInicial < dataSet.Tables[0].Rows.Count)
@@ -42,7 +42,6 @@ namespace _5413__ASP.NET.UI
                 for (int i = indexInicial; i < indexFinal; i++)
                 {
                     DataRow row = dataSet.Tables[0].Rows[i];
-
                     string id = row["Id"].ToString();
                     string titulo = row["Titulo"].ToString();
                     string subtitulo = row["Subtitulo"].ToString();

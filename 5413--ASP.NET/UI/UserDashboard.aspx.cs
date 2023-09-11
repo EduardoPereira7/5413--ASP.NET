@@ -78,5 +78,13 @@ namespace _5413__ASP.NET.UI
         {
             Response.Redirect("AdminDashboard.aspx");
         }
+
+        protected void btnVer_Click(object sender, EventArgs e)
+        {
+            Button btnVer = (Button)sender;
+            int artigoId = Convert.ToInt32(btnVer.CommandArgument);
+
+            Response.Redirect("PaginaArtigo.aspx?id=" + artigoId);
+        }
     }
 }

@@ -29,9 +29,9 @@
                                 <div class="card-body">
                                     <h4 class="card-title"><%# Eval("Titulo") %></h4>
                                     <h5 class="card-text"><%# Eval("Subtitulo") %></h5>
-                                    <p class="card-text"><%# Eval("Conteudo") %></p>
                                     <p class="card-text"><strong>Data de Publicação:</strong> <%# Eval("DataPublicacao", "{0:dd/MM/yyyy}") %></p>
                                     <p class="card-text"><strong>Categoria:</strong> <%# Eval("NomeCategoria") %></p>
+                                    <asp:Button ID="btnVer" runat="server" Text="Ver" OnClick="btnVer_Click" CommandArgument='<%# Eval("Id") %>' />
                                     <asp:Button ID="btnEditar" runat="server" Text="Editar" OnClick="btnEditar_Click" CommandArgument='<%# Eval("Id") %>' />
                                     <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("Id") %>' />
                                 </div>
