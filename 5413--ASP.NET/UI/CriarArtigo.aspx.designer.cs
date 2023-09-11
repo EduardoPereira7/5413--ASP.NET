@@ -15,6 +15,24 @@ namespace _5413__ASP.NET.UI
     {
 
         /// <summary>
+        /// lblAviso1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAviso1;
+
+        /// <summary>
+        /// lblAviso2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAviso2;
+
+        /// <summary>
         /// txtTitulo control.
         /// </summary>
         /// <remarks>
@@ -58,6 +76,15 @@ namespace _5413__ASP.NET.UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkAcessibilidade;
+
+        /// <summary>
+        /// btnVoltar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnVoltar;
 
         /// <summary>
         /// btnCriarArtigo control.

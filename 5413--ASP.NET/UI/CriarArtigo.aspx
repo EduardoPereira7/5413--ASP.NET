@@ -2,11 +2,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
-    <div class="container mt-5">
-        <h2>Criar Novo Artigo</h2>
+    <div class="container d-flex flex-column justify-content-center mt-5 text-center">
+        <asp:Label ID="lblAviso1" runat="server" CssClass="text-danger font-weight-bold" Text="Não tem permissões para criar artigos." Visible="false"></asp:Label>
+        <asp:Label ID="lblAviso2" runat="server" CssClass="text-danger font-weight-bold" Text="Deve aguardar até que um Administrador verifique a sua conta." Visible="false"></asp:Label>
+    </div>
+    <div class="container mt-2">
+        <h1 class="text-center">Criar artigo</h1>
         
-            <div class="form-group">
+            <div class="form-group mt-4">
                 <label for="txtTitulo">Título</label>
                 <asp:TextBox ID="txtTitulo" runat="server" CssClass="form-control" placeholder="Insira o título do artigo"></asp:TextBox>
             </div>
@@ -26,8 +29,7 @@
         <div class="form-group">
             <asp:CheckBox ID="chkAcessibilidade" runat="server" Text="Apenas utilizadores registrados podem visualizar" />
             </div>
-
+            <asp:Button ID="btnVoltar" runat="server" Text="Voltar" OnClientClick="window.history.back(); return false;" CssClass="btn btn-secondary" />
             <asp:Button ID="btnCriarArtigo" runat="server" Text="Criar Artigo" CssClass="btn btn-primary" OnClick="btnCriarArtigo_Click" />
     </div>
-   
 </asp:Content>

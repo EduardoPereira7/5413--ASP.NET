@@ -17,18 +17,27 @@ namespace _5413__ASP.NET.UI
             if (!IsPostBack)
             {
                 CarregarCategorias();
+                Utilizador user = (Utilizador)Session["Utilizador"];
+
+                if (user != null && !user.Verificado)
+                {
+                    
+                    DesabilitarCampos();
+                    lblAviso1.Visible = true;
+                    lblAviso2.Visible = true;
+                }
             }
         }
-            private void CarregarCategorias()
-            {
-                BLL.CategoriaBLL categoriaBLL = new BLL.CategoriaBLL();
-                DataSet dsCategorias = categoriaBLL.ObterCategorias();
+        private void CarregarCategorias()
+        {
+             BLL.CategoriaBLL categoriaBLL = new BLL.CategoriaBLL();
+             DataSet dsCategorias = categoriaBLL.ObterCategorias();
 
-                ddlCategoria.DataSource = dsCategorias.Tables[0];
-                ddlCategoria.DataTextField = "Nome"; 
-                ddlCategoria.DataValueField = "Id"; 
-                ddlCategoria.DataBind();
-            }
+             ddlCategoria.DataSource = dsCategorias.Tables[0];
+             ddlCategoria.DataTextField = "Nome"; 
+             ddlCategoria.DataValueField = "Id"; 
+             ddlCategoria.DataBind();
+        }
 
         protected void btnCriarArtigo_Click(object sender, EventArgs e)
         {
@@ -60,6 +69,15 @@ namespace _5413__ASP.NET.UI
                 //lblErro.Text = "Ocorreu um erro ao criar o artigo. Por favor, tente novamente.";
                 //lblErro.Visible = true;
             }
+        }
+        private void DesabilitarCampos()
+        {
+            txtTitulo.Enabled = false;
+            txtSubtitulo.Enabled = false;
+            txtConteudo.Enabled = false;
+            ddlCategoria.Enabled = false;
+            chkAcessibilidade.Enabled = false;
+            btnCriarArtigo.Enabled = false;
         }
     }
 }

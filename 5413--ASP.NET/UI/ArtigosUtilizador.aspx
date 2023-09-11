@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <div class="container">
+        <div class="container mb-5">
         <h1 id="h1Titulo" runat="server" class="text-center mb-2 font-weight-bold mt-4">Artigos do Utilizador</h1>
             <h3 id="h3NomeUtilizador" runat="server" class="text-center mb-5 "></h3>
         <div id="cardsContainer" runat="server" class="container">
