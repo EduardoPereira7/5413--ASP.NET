@@ -9,9 +9,10 @@
     </asp:ContentPlaceHolder>
      <%--bootstrap css--%>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" class="d-flex flex-column">
         <%--header--%>
          <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container d-flex justify-content-between">
@@ -42,10 +43,16 @@
                 </ul>
             </div>
         </nav>
-        <div>
+        <div class="flex-grow-1 mb-5 mt-2">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
+        <footer class="bg-dark text-light text-center py-3 fixed-bottom">
+    <div class="container">
+        <p>&copy; 2023 Eduardo Pereira e José Ribeiro.</p>
+    </div>
+</footer>
+
     </form>
 </body>
 </html>

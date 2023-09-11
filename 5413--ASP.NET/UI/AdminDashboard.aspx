@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container">
+    <div class="container mb-5">
         <div class="text-center mt-4 mb-5">
         <h1 class="font-weight-bold">Admin Dashboard</h1>
             <p class="font-weight-bold">

@@ -63,7 +63,7 @@ namespace _5413__ASP.NET.UI
             if (pesquisa.Length < 3)
             {
                 L_alert.Visible = true;
-                L_alert.Text = "São necessarias mais de 2 letras";
+                L_alert.Text = "São necessárias mais de 2 letras";
             }
             else
             {
