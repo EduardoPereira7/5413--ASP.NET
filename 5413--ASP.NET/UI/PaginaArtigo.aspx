@@ -15,7 +15,7 @@
         <asp:Label ID="L_Restrito" runat="server" Font-Bold="True" Font-Size="Medium" ForeColor="Red" Text="Acesso Restrito a Utilizadores Registados" Visible="False"></asp:Label>    
         <br />       
     </div>
-    <div id="divArtigo" class="p-5 text-justify" runat="server">
+    <div id="divArtigo" class="p-5 text-justify" runat="server" style="max-width: 100%; overflow-wrap: break-word;">
     </div>     
         <asp:Button ID="btnVoltar" runat="server" Text="Voltar" OnClientClick="window.history.back(); return false;" CssClass="btn btn-secondary mb-4 ml-5" />
         <asp:Button ID="Bt_like" runat="server" Text="Gosto" CssClass="btn btn-primary mb-4 ml-2" OnClick="Bt_like_Click"/>
