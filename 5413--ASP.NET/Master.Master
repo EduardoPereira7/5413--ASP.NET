@@ -47,8 +47,8 @@
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
-        <footer class="bg-dark text-light text-center py-3 fixed-bottom">
-    <div class="container">
+        <footer class="bg-dark text-light text-center fixed-bottom">
+    <div class="container pt-3">
         <p>&copy; 2023 Eduardo Pereira e José Ribeiro.</p>
     </div>
 </footer>
