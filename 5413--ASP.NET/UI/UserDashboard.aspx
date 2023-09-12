@@ -19,10 +19,10 @@
         </div>
     <div class="container mt-5">
     <div id="secaoArtigos" runat="server" visible="false">
-            <h2>Os Meus Artigos</h2>
-            <h3 id="feedback" class="text-center" visible="false" runat="server">Ainda não publicou nenhum artigo!</h3>
-            <div class="row">
-                <asp:Repeater ID="RepeaterArtigos" runat="server">
+    <h2>Os Meus Artigos</h2>
+    <h3 id="feedback" class="text-center" visible="false" runat="server">Ainda não publicou nenhum artigo!</h3>
+    <div class="row" id="artigosContainer" runat="server">
+        <asp:Repeater ID="RepeaterArtigos" runat="server">
                     <ItemTemplate>
                         <div class="col-md-6 mb-4">
                             <div class="card">
@@ -39,9 +39,14 @@
                         </div>
                     </ItemTemplate>
                 </asp:Repeater>
-            </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12 d-flex justify-content-center">
+            <asp:Button ID="btnPrevious" runat="server" Text="Anterior" OnClick="btnPrevious_Click" CssClass="btn btn-primary mx-1" />
+            <asp:Button ID="btnNext" runat="server" Text="Próximo" OnClick="btnNext_Click"  CssClass="btn btn-primary mx-1" />
         </div>
-
     </div>
 </div>
+        </div>
+        </div>
 </asp:Content>

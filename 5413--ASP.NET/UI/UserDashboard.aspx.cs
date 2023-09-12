@@ -102,5 +102,15 @@ namespace _5413__ASP.NET.UI
             int artigoId = Convert.ToInt32(btnVer.CommandArgument);
             Response.Redirect("PaginaArtigo.aspx?id=" + artigoId);
         }
+
+        protected void btnPrevious_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnNext_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
