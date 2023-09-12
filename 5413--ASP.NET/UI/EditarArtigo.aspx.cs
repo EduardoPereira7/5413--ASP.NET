@@ -25,18 +25,11 @@ namespace _5413__ASP.NET.UI
                 if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
                     DataRow row = ds.Tables[0].Rows[0];
-
-                    // Preenche os campos do formulário com as informações do artigo
                     txtTitulo.Text = row["Titulo"].ToString();
                     txtSubtitulo.Text = row["Subtitulo"].ToString();
                     txtConteudo.Text = row["Conteudo"].ToString();
-
-                    // Preenche o dropdown de categoria
                     CarregarCategorias();
-
-                    // Seleciona a categoria correta
                     ddlCategoria.SelectedValue = row["CategoriaId"].ToString();
-
                     chkAcessibilidade.Checked = Convert.ToBoolean(row["Acessibilidade"]);
                 }
             }
@@ -60,9 +53,16 @@ namespace _5413__ASP.NET.UI
             bool novaAcessibilidade = chkAcessibilidade.Checked;
 
             ArtigoBLL artigoBLL = new ArtigoBLL();
-
-            artigoBLL.editarArtigo(artigoId, novoTitulo, novoSubtitulo, novoConteudo, novaCategoriaId, novaAcessibilidade);
-            Response.Redirect("~/UI/UserDashboard.aspx");
+            bool edicaoBemSucedida = artigoBLL.editarArtigo(artigoId, novoTitulo, novoSubtitulo, novoConteudo, novaCategoriaId, novaAcessibilidade);
+            if (edicaoBemSucedida)
+            {
+                Session["FeedbackMessage"] = "Artigo editado com sucesso!";
+            }
+            else
+            {
+                Session["FeedbackMessage"] = "Ocorreu um erro ao editar o artigo. Por favor, tente novamente.";
+            }
+            Response.Redirect("~/UI/UserDashboard.aspx"); ;
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)

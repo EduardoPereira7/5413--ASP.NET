@@ -29,7 +29,7 @@
         <div class="form-group">
             <asp:CheckBox ID="chkAcessibilidade" runat="server" Text="Apenas utilizadores registrados podem visualizar" />
             </div>
-            <asp:Button ID="btnVoltar" runat="server" Text="Voltar" OnClientClick="window.history.back(); return false;" CssClass="btn btn-secondary" />
+            <asp:Button ID="btnVoltar" runat="server" Text="Voltar" OnClick="btnVoltar_Click" CssClass="btn btn-secondary" />
             <asp:Button ID="btnCriarArtigo" runat="server" Text="Criar Artigo" CssClass="btn btn-primary" OnClick="btnCriarArtigo_Click" />
     </div>
 </asp:Content>

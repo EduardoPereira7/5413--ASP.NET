@@ -34,6 +34,14 @@ namespace _5413__ASP.NET.UI
                 {
                     divCriarArtigo.Attributes["class"] = "col-md-12";
                 }
+                if (Session["FeedbackMessage"] != null)
+                {
+                    string feedbackMessage = Session["FeedbackMessage"].ToString();
+                    feedbackTop.Text = feedbackMessage;
+                    feedbackTop.CssClass = feedbackMessage.Contains("erro") ? "text-danger" : "text-success";
+                    feedbackTop.Visible = true;
+                    Session.Remove("FeedbackMessage");
+                }
             }
         }
 
@@ -69,9 +77,18 @@ namespace _5413__ASP.NET.UI
             int artigoId = Convert.ToInt32(btn.CommandArgument);
 
             BLL.ArtigoBLL b = new BLL.ArtigoBLL();
-            b.eliminarArtigo(artigoId);
+            bool exclusaoBemSucedida = b.eliminarArtigo(artigoId);
 
-            carregarMeusArtigos();
+            if (exclusaoBemSucedida)
+            {
+                Session["FeedbackMessage"] = "Artigo eliminado com sucesso!";
+            }
+            else
+            {
+                Session["FeedbackMessage"] = "Ocorreu um erro ao eliminar o artigo. Por favor, tente novamente.";
+            }
+
+            Response.Redirect("UserDashboard.aspx");
         }
 
         protected void btnAdminDashboard_Click(object sender, EventArgs e)
@@ -83,7 +100,6 @@ namespace _5413__ASP.NET.UI
         {
             Button btnVer = (Button)sender;
             int artigoId = Convert.ToInt32(btnVer.CommandArgument);
-
             Response.Redirect("PaginaArtigo.aspx?id=" + artigoId);
         }
     }
