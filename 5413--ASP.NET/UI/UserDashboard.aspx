@@ -24,7 +24,7 @@
             <div class="row">
                 <asp:Repeater ID="RepeaterArtigos" runat="server">
                     <ItemTemplate>
-                        <div class="col-md-12 mb-4">
+                        <div class="col-md-6 mb-4">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title"><%# Eval("Titulo") %></h4>
