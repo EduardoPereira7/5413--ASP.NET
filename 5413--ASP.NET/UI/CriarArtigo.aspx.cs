@@ -57,18 +57,16 @@ namespace _5413__ASP.NET.UI
             BLL.ArtigoBLL artigoBLL = new BLL.ArtigoBLL();
             bool sucesso = artigoBLL.CriarArtigo(titulo, subtitulo, conteudo, dataPublicacao, acessibilidade, categoriaId, utilizadorId);
 
-            if (sucesso) //incompleto
+            if (sucesso)
             {
-                // Redirecionar para a página de sucesso ou exibir mensagem ao utilizador
-                Response.Redirect("UserDashboard.aspx");
+                Session["FeedbackMessage"] = "<span>Artigo criado com sucesso!</span>";
             }
             else
             {
-                // Exibir mensagem de erro ao utilizador
-                Response.Redirect("index.aspx");
-                //lblErro.Text = "Ocorreu um erro ao criar o artigo. Por favor, tente novamente.";
-                //lblErro.Visible = true;
+                Session["FeedbackMessage"] = "<span style='font-weight:bold; font-size:18px;'>Ocorreu um erro ao criar o artigo. Por favor, tente novamente.</span>";
             }
+
+            Response.Redirect("UserDashboard.aspx");
         }
         private void DesabilitarCampos()
         {
@@ -78,6 +76,12 @@ namespace _5413__ASP.NET.UI
             ddlCategoria.Enabled = false;
             chkAcessibilidade.Enabled = false;
             btnCriarArtigo.Enabled = false;
+        }
+
+        protected void btnVoltar_Click(object sender, EventArgs e)
+        {
+            Session.Remove("FeedbackMessage");
+            Response.Redirect("UserDashboard.aspx");
         }
     }
 }

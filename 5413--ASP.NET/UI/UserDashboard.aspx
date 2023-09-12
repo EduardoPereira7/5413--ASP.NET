@@ -6,9 +6,11 @@
     <div class="container">
         <div class="text-center mt-4 mb-5">
         <h1 class="font-weight-bold">Dashboard</h1>
+        <asp:Label ID="feedbackTop" runat="server" Visible="false" style='font-weight:bold; font-size:18px;'></asp:Label>
     </div>
         </div>
     <div class="container d-flex mt-5">
+
             <div id="divCriarArtigo" runat="server">
                 <asp:Button ID="criarArtigo" class="btn btn-primary btn-block" runat="server" Text="Criar Artigo" OnClick="criarArtigo_Click" />
             </div>

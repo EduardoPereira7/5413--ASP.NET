@@ -29,11 +29,11 @@ namespace _5413__ASP.NET.BLL
             return dal.obterDs(sqlSelect);
         }//-------------------------------------------------------
 
-        public void eliminarArtigo(int artigoID)
+        public bool eliminarArtigo(int artigoID)
         {
             string sql = "DELETE FROM Artigos WHERE Id = " + artigoID;
             DAL.DAL dal = new DAL.DAL();
-            dal.crud(sql);
+            return dal.crud(sql);
         }//-------------------------------------------------------
 
         public bool CriarArtigo(string titulo, string subtitulo, string conteudo, DateTime dataPublicacao, bool acessibilidade, int categoriaId, int utilizadorId)
