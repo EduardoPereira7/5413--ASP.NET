@@ -10,7 +10,6 @@
     </div>
         </div>
     <div class="container d-flex mt-5">
-
             <div id="divCriarArtigo" runat="server">
                 <asp:Button ID="criarArtigo" class="btn btn-primary btn-block" runat="server" Text="Criar Artigo" OnClick="criarArtigo_Click" />
             </div>
@@ -19,7 +18,6 @@
             </div>
         </div>
     <div class="container mt-5">
-
     <div id="secaoArtigos" runat="server" visible="false">
             <h2>Os Meus Artigos</h2>
             <h3 id="feedback" class="text-center" visible="false" runat="server">Ainda não publicou nenhum artigo!</h3>
@@ -33,9 +31,9 @@
                                     <h5 class="card-text"><%# Eval("Subtitulo") %></h5>
                                     <p class="card-text"><strong>Data de Publicação:</strong> <%# Eval("DataPublicacao", "{0:dd/MM/yyyy}") %></p>
                                     <p class="card-text"><strong>Categoria:</strong> <%# Eval("NomeCategoria") %></p>
-                                    <asp:Button ID="btnVer" runat="server" Text="Ver" OnClick="btnVer_Click" CommandArgument='<%# Eval("Id") %>' />
-                                    <asp:Button ID="btnEditar" runat="server" Text="Editar" OnClick="btnEditar_Click" CommandArgument='<%# Eval("Id") %>' />
-                                    <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("Id") %>' />
+                                    <asp:Button ID="btnVer" runat="server" CssClass="btn btn-primary" Text="Ver" OnClick="btnVer_Click" CommandArgument='<%# Eval("Id") %>' />
+                                    <asp:Button ID="btnEditar" runat="server" CssClass="btn btn-primary" Text="Editar" OnClick="btnEditar_Click" CommandArgument='<%# Eval("Id") %>' />
+                                    <asp:Button ID="btnEliminar" runat="server" CssClass="btn btn-danger" Text="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("Id") %>' />
                                 </div>
                             </div>
                         </div>
