@@ -64,18 +64,18 @@ namespace _5413__ASP.NET.BLL
             return dal.obterDs(sqlCommand);
         }//-------------------------------------------------------------------------------------------------------------
 
-        public void alterarVerificacao(int userId, bool verificado)
+        public bool alterarVerificacao(int userId, bool verificado)
         {
             string sqlcommand = "UPDATE Utilizadores SET Verificado = " + (verificado ? "1" : "0") + " WHERE Id = " + userId;
             DAL.DAL dal = new DAL.DAL();
-            dal.crud(sqlcommand);
+            return(dal.crud(sqlcommand));
         }//-------------------------------------------------------------------------------------------------------------
 
-        public void eliminarUtilizador(int userId)
+        public bool eliminarUtilizador(int userId)
         {
             string sql = "DELETE FROM Utilizadores WHERE Id = " + userId;
             DAL.DAL dal = new DAL.DAL();
-            dal.crud(sql);
+            return(dal.crud(sql));
         }//-------------------------------------------------------------------------------------------------------------
 
         public int verSeEmailJaExiste(string email)
