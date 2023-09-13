@@ -15,13 +15,13 @@ namespace _5413__ASP.NET.UI
     {
 
         /// <summary>
-        /// L_Error control.
+        /// feedbackTop control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label L_Error;
+        protected global::System.Web.UI.WebControls.Label feedbackTop;
 
         /// <summary>
         /// criarArtigo control.

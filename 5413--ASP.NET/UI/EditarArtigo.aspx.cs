@@ -51,7 +51,19 @@ namespace _5413__ASP.NET.UI
             string novoConteudo = txtConteudo.Text;
             int novaCategoriaId = Convert.ToInt32(ddlCategoria.SelectedValue);
             bool novaAcessibilidade = chkAcessibilidade.Checked;
-
+            if (string.IsNullOrWhiteSpace(novoTitulo) || string.IsNullOrWhiteSpace(novoSubtitulo) || string.IsNullOrWhiteSpace(novoConteudo))
+            {
+                lblAvisoTitulo.Visible = true;
+                lblAvisoSubTitulo.Visible = true;
+                lblAvisoConteudo.Visible = true;
+                return;
+            }
+            else
+            {
+                lblAvisoTitulo.Visible = false;
+                lblAvisoSubTitulo.Visible = false;
+                lblAvisoConteudo.Visible = false;
+            }
             ArtigoBLL artigoBLL = new ArtigoBLL();
             bool edicaoBemSucedida = artigoBLL.editarArtigo(artigoId, novoTitulo, novoSubtitulo, novoConteudo, novaCategoriaId, novaAcessibilidade);
             if (edicaoBemSucedida)

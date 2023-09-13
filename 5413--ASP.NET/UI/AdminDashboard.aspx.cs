@@ -33,6 +33,7 @@ namespace _5413__ASP.NET.UI
             {
                 preencherUtilizadoresNaoVerificados();
                 preencherTodosUtilizadores();
+                MostrarMensagensFeedback();
             }
         }//-----------------------------------------------------------------------------------------
 
@@ -71,19 +72,24 @@ namespace _5413__ASP.NET.UI
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            L_Error.Visible = false;
+            feedbackTop.Visible = false;
             Button btn = (Button)sender;
             int userId = Convert.ToInt32(btn.CommandArgument);           
             
             BLL.UtilizadorBLL b = new BLL.UtilizadorBLL();
             if (b.verSeAdmin(userId) < 1 || b.contaAdmins() > 1) //se não for Admin ou não for unico Admin
-            { 
-                b.eliminarUtilizador(userId);
+            {
+                bool exclusaoBemSucedida = b.eliminarUtilizador(userId);
+                Session["FeedbackMessage"] = exclusaoBemSucedida
+                ? "Utilizador eliminado com sucesso!"
+                : "Ocorreu um erro ao eliminar o utilizador. Por favor, tente novamente.";
+                MostrarMensagensFeedback();
             }
             else
             {
-                L_Error.Visible = true;
-                L_Error.Text = "TEM DE HAVER UM ADMIN";
+                feedbackTop.Visible = true;
+                feedbackTop.Text = "Tem de haver pelo menos um administrador!";
+                feedbackTop.CssClass = "text-danger";
                 return;
             }                         
 
@@ -99,7 +105,11 @@ namespace _5413__ASP.NET.UI
 
             // Chamar um método na BLL para alterar a verificação do utilizador com o userId
             BLL.UtilizadorBLL b = new BLL.UtilizadorBLL();
-            b.alterarVerificacao(userId, true);
+            bool verificacaoBemSucedida = b.alterarVerificacao(userId, true);
+            Session["FeedbackMessage"] = verificacaoBemSucedida
+                ? "Utilizador verificado com sucesso!"
+                : "Ocorreu um erro a verificar o utilizador. Por favor, tente novamente.";
+            MostrarMensagensFeedback();
 
             preencherUtilizadoresNaoVerificados();
             preencherTodosUtilizadores();
@@ -134,6 +144,17 @@ namespace _5413__ASP.NET.UI
         protected void gerirMeusArtigos_Click(object sender, EventArgs e)
         {
             Response.Redirect("UserDashboard.aspx");
+        }
+        private void MostrarMensagensFeedback()
+        {
+            if (Session["FeedbackMessage"] != null)
+            {
+                string feedbackMessage = Session["FeedbackMessage"].ToString();
+                feedbackTop.Text = feedbackMessage;
+                feedbackTop.CssClass = feedbackMessage.Contains("erro") ? "text-danger" : "text-success";
+                feedbackTop.Visible = true;
+                Session.Remove("FeedbackMessage");
+            }
         }
     }
 }
