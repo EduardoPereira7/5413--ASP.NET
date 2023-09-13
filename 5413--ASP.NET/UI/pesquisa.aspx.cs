@@ -104,7 +104,7 @@ namespace _5413__ASP.NET.UI
                                 <div class='card-body' style='color: #213555;'>
                                     <h6 class='card-title'>{Subtitulo}</h6>
                                     <p class='card-text'>Publicado em: {dataPublicacao.ToShortDateString()}</p>
-                                    <p class='card-text'>LIKES: {likes}</p>
+                                    <p class='card-text'>Gostos: {likes}</p>
                                 </div>
                             </div>
                             <a>

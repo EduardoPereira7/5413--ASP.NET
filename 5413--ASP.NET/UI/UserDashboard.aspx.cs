@@ -14,6 +14,10 @@ namespace _5413__ASP.NET.UI
         int userId;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                Session["indexAtualPagina"] = 0;
+            }
             if (Session["Utilizador"] == null)
             {
                 Response.Redirect("Login.aspx");
@@ -51,8 +55,12 @@ namespace _5413__ASP.NET.UI
         }
         protected void carregarMeusArtigos()
         {
+            int paginaAtual = (int)Session["indexAtualPagina"];
+            int artigosPorPagina = 8;
+            int offset = paginaAtual * artigosPorPagina;
+
             BLL.ArtigoBLL b = new BLL.ArtigoBLL();
-            DataSet dsArtigos = b.ObterArtigosDoUtilizador(userId);
+            DataSet dsArtigos = b.ObterArtigosDoUtilizador(userId, offset, artigosPorPagina);
 
             RepeaterArtigos.DataSource = dsArtigos;
             RepeaterArtigos.DataBind();
@@ -61,6 +69,11 @@ namespace _5413__ASP.NET.UI
             {
                 feedback.Visible = true;
             }
+            int totalArtigos = b.ObterTotalArtigosDoUtilizador(userId);
+            int totalPaginas = (int)Math.Ceiling((double)totalArtigos / artigosPorPagina);
+
+            btnPrevious.Enabled = paginaAtual > 0;
+            btnNext.Enabled = paginaAtual < totalPaginas - 1;
         }
 
         protected void btnEditar_Click(object sender, EventArgs e)
@@ -105,12 +118,29 @@ namespace _5413__ASP.NET.UI
 
         protected void btnPrevious_Click(object sender, EventArgs e)
         {
-
+            int paginaAtual = (int)Session["indexAtualPagina"];
+            if (paginaAtual > 0)
+            {
+                paginaAtual--;
+                Session["indexAtualPagina"] = paginaAtual;
+                carregarMeusArtigos();
+            }
         }
 
         protected void btnNext_Click(object sender, EventArgs e)
         {
+            int paginaAtual = (int)Session["indexAtualPagina"];
+            int artigosPorPagina = 8;
+            BLL.ArtigoBLL b = new BLL.ArtigoBLL();
+            int totalArtigos = b.ObterTotalArtigosDoUtilizador(userId);
+            int totalPaginas = (int)Math.Ceiling((double)totalArtigos / artigosPorPagina);
 
+            if (paginaAtual < totalPaginas - 1)
+            {
+                paginaAtual++;
+                Session["indexAtualPagina"] = paginaAtual;
+                carregarMeusArtigos();
+            }
         }
     }
 }

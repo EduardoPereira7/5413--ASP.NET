@@ -132,6 +132,28 @@ namespace _5413__ASP.NET.BLL
 
             conn.Close();
         }//-------------------------------------------------------
+        public DataSet ObterArtigosDoUtilizador(int utilizadorId, int offset, int artigosPorPagina)
+        {
+            string sqlSelect = $"SELECT A.*, C.Nome AS NomeCategoria " +
+                              $"FROM Artigos AS A " +
+                              $"INNER JOIN Categorias AS C ON A.CategoriaId = C.Id " +
+                              $"WHERE A.UtilizadorId = {utilizadorId} " +
+                              $"ORDER BY DataPublicacao DESC " +
+                              $"OFFSET {offset} ROWS " +
+                              $"FETCH NEXT {artigosPorPagina} ROWS ONLY";
+
+            DAL.DAL dal = new DAL.DAL();
+            return dal.obterDs(sqlSelect);
+        }
+        public int ObterTotalArtigosDoUtilizador(int utilizadorId)
+        {
+            string sqlCount = $"SELECT COUNT(*) " +
+                              $"FROM Artigos " +
+                              $"WHERE UtilizadorId = {utilizadorId}";
+
+            DAL.DAL dal = new DAL.DAL();
+            return dal.countRows(sqlCount);
+        }
 
     }
 }
