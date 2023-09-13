@@ -44,6 +44,21 @@ namespace _5413__ASP.NET.UI
             string titulo = txtTitulo.Text;
             string subtitulo = txtSubtitulo.Text;
             string conteudo = txtConteudo.Text;
+
+            if (string.IsNullOrWhiteSpace(titulo) || string.IsNullOrWhiteSpace(subtitulo) || string.IsNullOrWhiteSpace(conteudo))
+            {
+                lblAvisoTitulo.Visible = true;
+                lblAvisoSubTitulo.Visible = true;
+                lblAvisoConteudo.Visible = true;
+                return;
+            }
+            else
+            {
+                lblAvisoTitulo.Visible = false;
+                lblAvisoSubTitulo.Visible = false;
+                lblAvisoConteudo.Visible = false;
+            }
+
             DateTime dataPublicacao = DateTime.Now;
             int categoriaId = Convert.ToInt32(ddlCategoria.SelectedValue);
 

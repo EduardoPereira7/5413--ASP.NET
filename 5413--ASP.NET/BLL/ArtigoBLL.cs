@@ -12,6 +12,7 @@ namespace _5413__ASP.NET.BLL
         public string sqlCommand;
         public DataSet ObterArtigosDoUtilizador(int utilizadorId, int offset, int artigosPorPagina)
         {
+            
             string sqlSelect = $"SELECT A.*, C.Nome AS NomeCategoria " +
                               $"FROM Artigos AS A " +
                               $"INNER JOIN Categorias AS C ON A.CategoriaId = C.Id " +

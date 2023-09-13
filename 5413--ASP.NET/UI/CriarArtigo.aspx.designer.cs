@@ -42,6 +42,15 @@ namespace _5413__ASP.NET.UI
         protected global::System.Web.UI.WebControls.TextBox txtTitulo;
 
         /// <summary>
+        /// lblAvisoTitulo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAvisoTitulo;
+
+        /// <summary>
         /// txtSubtitulo control.
         /// </summary>
         /// <remarks>
@@ -51,6 +60,15 @@ namespace _5413__ASP.NET.UI
         protected global::System.Web.UI.WebControls.TextBox txtSubtitulo;
 
         /// <summary>
+        /// lblAvisoSubTitulo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAvisoSubTitulo;
+
+        /// <summary>
         /// txtConteudo control.
         /// </summary>
         /// <remarks>
@@ -58,6 +76,15 @@ namespace _5413__ASP.NET.UI
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtConteudo;
+
+        /// <summary>
+        /// lblAvisoConteudo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAvisoConteudo;
 
         /// <summary>
         /// ddlCategoria control.

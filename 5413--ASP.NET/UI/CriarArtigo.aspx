@@ -12,14 +12,17 @@
             <div class="form-group mt-4">
                 <label for="txtTitulo">Título</label>
                 <asp:TextBox ID="txtTitulo" runat="server" CssClass="form-control" placeholder="Insira o título do artigo"></asp:TextBox>
+                <asp:Label ID="lblAvisoTitulo" runat="server" CssClass="text-danger font-weight-bold" Text="Deve preencher todos os campos" Visible="false"></asp:Label>
             </div>
             <div class="form-group">
                 <label for="txtSubtitulo">Subtítulo</label>
                 <asp:TextBox ID="txtSubtitulo" runat="server" CssClass="form-control" placeholder="Insira o subtítulo do artigo"></asp:TextBox>
+            <asp:Label ID="lblAvisoSubTitulo" runat="server" CssClass="text-danger font-weight-bold" Text="Deve preencher todos os campos" Visible="false"></asp:Label>
             </div>
             <div class="form-group">
                 <label for="txtConteudo">Conteúdo</label>
                 <asp:TextBox ID="txtConteudo" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="6" placeholder="Insira o conteúdo do artigo"></asp:TextBox>
+                <asp:Label ID="lblAvisoConteudo" runat="server" CssClass="text-danger font-weight-bold" Text="Deve preencher todos os campos" Visible="false"></asp:Label>
             </div>
             <div class="form-group">
                 <label for="ddlCategoria">Categoria</label>
