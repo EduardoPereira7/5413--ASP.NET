@@ -33,13 +33,13 @@ namespace _5413__ASP.NET.UI
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl h3NomeUtilizador;
 
         /// <summary>
-        /// cardsContainer control.
+        /// feedbackTop control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cardsContainer;
+        protected global::System.Web.UI.WebControls.Label feedbackTop;
 
         /// <summary>
         /// mensagemArtigos control.
@@ -51,6 +51,15 @@ namespace _5413__ASP.NET.UI
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl mensagemArtigos;
 
         /// <summary>
+        /// cardsContainer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cardsContainer;
+
+        /// <summary>
         /// rptArtigos control.
         /// </summary>
         /// <remarks>
@@ -60,21 +69,21 @@ namespace _5413__ASP.NET.UI
         protected global::System.Web.UI.WebControls.Repeater rptArtigos;
 
         /// <summary>
-        /// btnPrevious control.
+        /// btnAnterior control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPrevious;
+        protected global::System.Web.UI.WebControls.Button btnAnterior;
 
         /// <summary>
-        /// btnNext control.
+        /// btnProximo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNext;
+        protected global::System.Web.UI.WebControls.Button btnProximo;
     }
 }
