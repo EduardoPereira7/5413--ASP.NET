@@ -27,8 +27,8 @@ namespace _5413__ASP.NET.UI
 
         private void CarregarArtigos(int indexAtualPagina)
         {
-            ArtigoBLL artigoBLL = new ArtigoBLL();
-            DataSet dataSet = artigoBLL.ObterTodosOsArtigos();
+            BLL.ArtigoBLL b = new BLL.ArtigoBLL();
+            DataSet dataSet = b.ObterTodosOsArtigos();
 
             int artigosPorPagina = 4; //Nr. de artigos por pag
             int indexInicial = indexAtualPagina * artigosPorPagina;

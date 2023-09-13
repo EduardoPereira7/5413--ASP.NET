@@ -32,8 +32,8 @@
                 </asp:BoundField>
                 <asp:TemplateField HeaderText="Ação">
                     <ItemTemplate>
-                        <asp:Button ID="btnVerificar" runat="server" Text="Verificar" OnClick="btnVerificar_Click" CommandArgument='<%# Eval("Id") %>' Visible='<%# !(bool)Eval("Verificado") %>' />                                  
-                        <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("Id") %>' />
+                        <asp:Button ID="btnVerificar" runat="server" CssClass="btn btn-primary" Text="Verificar" OnClick="btnVerificar_Click" CommandArgument='<%# Eval("Id") %>' Visible='<%# !(bool)Eval("Verificado") %>' />                                  
+                        <asp:Button ID="btnEliminar" runat="server" CssClass="btn btn-danger" Text="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("Id") %>' />
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
@@ -49,14 +49,13 @@
                 <asp:BoundField DataField="Id" HeaderText="ID" />
                 <asp:BoundField DataField="Nome" HeaderText="Nome" />
                 <asp:BoundField DataField="Email" HeaderText="Email" />
-                <%--<asp:BoundField DataField="Password" HeaderText="Password" />--%>
                 <asp:BoundField DataField="Verificado" HeaderText="Verificado" />
                 <asp:BoundField DataField="admin" HeaderText="Admin" />
                 <asp:TemplateField HeaderText="Ação">
             <ItemTemplate>
-                <asp:Button ID="btnEdit" runat="server" Text="Editar" OnClick="btnEditar" CommandArgument='<%# Eval("Id") %>' />                
-                <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("Id") %>' />
-                <asp:Button ID="btnVerArtigos" runat="server" Text="Ver artigos" OnClick="btnVerArtigos_Click" CommandArgument='<%# Eval("Id") %>' />
+                <asp:Button ID="btnVerArtigos" runat="server" CssClass="btn btn-primary" Text="Ver artigos" OnClick="btnVerArtigos_Click" CommandArgument='<%# Eval("Id") %>' />
+                <asp:Button ID="btnEdit" runat="server" CssClass="btn btn-primary" Text="Editar" OnClick="btnEditar" CommandArgument='<%# Eval("Id") %>' />                
+                <asp:Button ID="btnEliminar" runat="server" CssClass="btn btn-danger" Text="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("Id") %>' />
             </ItemTemplate>
                     <HeaderStyle HorizontalAlign="Center" />
         </asp:TemplateField>

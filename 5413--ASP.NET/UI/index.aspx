@@ -15,7 +15,7 @@
         <asp:Label ID="lblSemArtigos" runat="server" Text="Nenhum artigo para mostrar" Visible="false" Font-Bold="true" Font-Size="Large"/>
     </div>
     <div class="d-flex justify-content-center pagination mt-3">
-        <asp:Button ID="btnPrev" runat="server" Text="Prev" OnClick="btnPrev_Click" CssClass="btn btn-primary mx-2 mb-5" />
-        <asp:Button ID="btnNext" runat="server" Text="Next" OnClick="btnNext_Click" CssClass="btn btn-primary mx-2 mb-5" />
+        <asp:Button ID="btnPrev" runat="server" Text="Anterior" OnClick="btnPrev_Click" CssClass="btn btn-primary mx-2 mb-5" />
+        <asp:Button ID="btnNext" runat="server" Text="Próximo" OnClick="btnNext_Click" CssClass="btn btn-primary mx-2 mb-5" />
     </div>
 </asp:Content>
