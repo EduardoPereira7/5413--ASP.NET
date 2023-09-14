@@ -38,7 +38,7 @@
                         <a id="UserName" class="nav-link" runat="server" href="index.aspx"></a>
                     </li>
                     <li id="LogOutListItem" runat="server" class="nav-item">
-                        <a id="logoutLink" class="nav-link" runat="server" href="~/UI/Logout.aspx">Terminar Sessã</a>
+                        <a id="logoutLink" class="nav-link" runat="server" href="~/UI/Logout.aspx">Terminar Sessão</a>
                     </li>
                 </ul>
             </div>
