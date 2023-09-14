@@ -14,7 +14,6 @@ namespace _5413__ASP.NET.UI
     public partial class pesquisa1 : System.Web.UI.Page
     {
         int indexAtualPagina;
-
         int artigosPorPagina = 4;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -23,6 +22,20 @@ namespace _5413__ASP.NET.UI
             {
                 preencherDatas();
                 Session["indexAtualPagina"] = 0;
+                CategoriaBLL categoriaBLL = new CategoriaBLL();
+                DataSet categoriasDataSet = categoriaBLL.ObterCategorias();
+
+                if (categoriasDataSet.Tables.Count > 0)
+                {
+                    chkCategorias.DataSource = categoriasDataSet.Tables[0];
+                    chkCategorias.DataTextField = "Nome";
+                    chkCategorias.DataValueField = "Id";
+                    chkCategorias.DataBind();
+
+                    ListItem todasCategorias = new ListItem("Todas", "0");
+                    todasCategorias.Selected = true;
+                    chkCategorias.Items.Insert(0, todasCategorias);
+                }
             }
             indexAtualPagina = Convert.ToInt32(Session["indexAtualPagina"]);
             
@@ -40,7 +53,6 @@ namespace _5413__ASP.NET.UI
             DD_Anos.DataSource = anos;
             DD_Anos.DataBind();
 
-
             List<int> meses = new List<int>();
             for (int mes = 1; mes <= 12; mes++)
                 meses.Add(mes);
@@ -50,20 +62,35 @@ namespace _5413__ASP.NET.UI
 
         protected void btn_Pesquizar_Click(object sender, EventArgs e)
         {
-
+            int contSelecionadas = 0;
             L_alert.Visible = false;
             int anoSelecionado = Convert.ToInt32(DD_Anos.SelectedValue);
             int mesSelecionado = Convert.ToInt32(DD_Mes.SelectedValue);
 
+            List<int> categoriasSelecionadasData = new List<int>();
+            foreach (ListItem item in chkCategorias.Items)
+            {
+                if (item.Selected && item.Value != "0")
+                {
+                    categoriasSelecionadasData.Add(int.Parse(item.Value));
+                    contSelecionadas++;
+                }
+            }
+            if (contSelecionadas == 0)
+            {
+                chkCategorias.Items[0].Selected = true;
+            }
+
             ArtigoBLL artigoBLL = new ArtigoBLL();
-            Session["MeuDataSet"] = artigoBLL.ObterArtigosPorData(anoSelecionado, mesSelecionado);
-            
+            Session["MeuDataSet"] = artigoBLL.ObterArtigosPorDataECategoria(anoSelecionado, mesSelecionado, categoriasSelecionadasData);
 
             afixaArtigos(indexAtualPagina);
         }//--------------------------------------------------------
 
+
         protected void btn_PesquisarPalavra_Click(object sender, EventArgs e)
         {
+            int contSelecionadas=0;
             string pesquisa = T_pesquisa.Text;
             L_alert.Visible = false;
 
@@ -71,16 +98,29 @@ namespace _5413__ASP.NET.UI
             {
                 L_alert.Visible = true;
                 L_alert.Text = "São necessárias mais de 2 letras";
+                return;
             }
-            else
+
+            List<int> categoriasSelecionadas = new List<int>();
+            foreach (ListItem item in chkCategorias.Items)
             {
-
-                ArtigoBLL artigoBLL = new ArtigoBLL();
-                Session["MeuDataSet"] = artigoBLL.ObterArtigosPorPalavra(pesquisa);
-                T_pesquisa.Text = string.Empty;
-                afixaArtigos(indexAtualPagina);
-
+                if (item.Selected && item.Value != "0")
+                {
+                    categoriasSelecionadas.Add(int.Parse(item.Value));
+                    contSelecionadas++;
+                }
+               
             }
+                if (contSelecionadas == 0)
+                {
+                    chkCategorias.Items[0].Selected = true;
+                }
+
+            ArtigoBLL artigoBLL = new ArtigoBLL();
+            Session["MeuDataSet"] = artigoBLL.ObterArtigosPorPalavraECategoria(pesquisa, categoriasSelecionadas);
+
+            T_pesquisa.Text = string.Empty;
+            afixaArtigos(indexAtualPagina);
         }//--------------------------------------------------------
 
         protected void afixaArtigos(int indexAtualPagina)
@@ -143,7 +183,7 @@ namespace _5413__ASP.NET.UI
             indexAtualPagina--;
             Session["indexAtualPagina"] = indexAtualPagina;
             afixaArtigos(indexAtualPagina);
-        }
+        }//--------------------------------------------------------
 
         protected void btnNext_Click(object sender, EventArgs e)
         {
@@ -152,6 +192,6 @@ namespace _5413__ASP.NET.UI
             Session["indexAtualPagina"] = indexAtualPagina;
             
             afixaArtigos(indexAtualPagina);
-        }
+        }//--------------------------------------------------------
     }
 }

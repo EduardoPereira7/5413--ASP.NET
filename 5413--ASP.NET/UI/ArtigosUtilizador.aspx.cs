@@ -21,6 +21,19 @@ namespace _5413__ASP.NET.UI
             {
                 Session["indexAtualPagina"] = 0;
             }
+            if (Session["Utilizador"] == null)
+            {
+                Response.Redirect("Login.aspx");
+                return;
+            }
+
+            Utilizador user = (Utilizador)Session["Utilizador"];
+
+            if (!user.Admin)
+            {
+                Response.Redirect("index.aspx");
+                return;
+            }
 
             if (Request.QueryString["userId"] != null)
             {
@@ -35,7 +48,7 @@ namespace _5413__ASP.NET.UI
                 Response.Redirect("index.aspx");
                 return;
             }
-        }
+        }//--------------------------------------------------------
 
         protected void CarregarArtigosDoUtilizador()
         {
@@ -54,7 +67,7 @@ namespace _5413__ASP.NET.UI
 
             btnAnterior.Enabled = paginaAtual > 0;
             btnProximo.Enabled = paginaAtual < totalPaginas - 1;
-        }
+        }//--------------------------------------------------------
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -81,7 +94,7 @@ namespace _5413__ASP.NET.UI
                 Session["indexAtualPagina"] = (int)Session["indexAtualPagina"] - 1;
                 CarregarArtigosDoUtilizador();
             }
-        }
+        }//--------------------------------------------------------
 
         private string ObterNomeUtilizador(int userId)
         {
@@ -95,7 +108,7 @@ namespace _5413__ASP.NET.UI
                 return nome;
             }
             return "Utilizador Desconhecido";
-        }
+        }//--------------------------------------------------------
 
         protected void btnAnterior_Click(object sender, EventArgs e)
         {
@@ -106,7 +119,7 @@ namespace _5413__ASP.NET.UI
                 Session["indexAtualPagina"] = paginaAtual;
                 CarregarArtigosDoUtilizador();
             }
-        }
+        }//--------------------------------------------------------
 
         protected void btnProximo_Click(object sender, EventArgs e)
         {
@@ -121,6 +134,6 @@ namespace _5413__ASP.NET.UI
                 Session["indexAtualPagina"] = paginaAtual;
                 CarregarArtigosDoUtilizador();
             }
-        }
+        }//--------------------------------------------------------
     }
 }

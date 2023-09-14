@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _5413__ASP.NET.BLL;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -15,13 +16,25 @@ namespace _5413__ASP.NET.UI
         static int userID;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Utilizador"] == null)
+            {
+                Response.Redirect("Login.aspx");
+                return;
+            }
+
+            Utilizador user = (Utilizador)Session["Utilizador"];
+
+            if (!user.Admin)
+            {
+                Response.Redirect("index.aspx");
+                return;
+            }
             if (!IsPostBack)
             {
                 userID = int.Parse(Request.QueryString["id"]);
                 preencheUtilizador(userID);
             }
-            
-        }
+        }//--------------------------------------------------------
 
         protected void preencheUtilizador(int userID)
         {
@@ -38,7 +51,7 @@ namespace _5413__ASP.NET.UI
                 chkVerificado.Checked = Convert.ToBoolean(row["Verificado"]);
                 chkAdmin.Checked = Convert.ToBoolean(row["Admin"]);
             }
-        }
+        }//--------------------------------------------------------
 
         protected void btnEditarUtilizador_Click(object sender, EventArgs e)
         {
@@ -100,12 +113,12 @@ namespace _5413__ASP.NET.UI
             }
             
             Response.Redirect("~/UI/AdminDashboard.aspx");
-        }
+        }//--------------------------------------------------------
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/UI/AdminDashboard.aspx");
-        }
+        }//--------------------------------------------------------
 
         protected void chkNaoAlterarSenha_CheckedChanged(object sender, EventArgs e)
         {
@@ -118,7 +131,7 @@ namespace _5413__ASP.NET.UI
             {
                 txtPassword.Enabled = true;
             }
-        }
+        }//--------------------------------------------------------
         private bool IsValidEmail(string email)
         {
             // Expressão regular para validar o formato de um email

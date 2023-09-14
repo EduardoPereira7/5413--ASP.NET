@@ -15,5 +15,5 @@ namespace _5413__ASP.NET.UI
             Session.Abandon();
             Response.Redirect("index.aspx");
         }
-    }
+    }//--------------------------------------------------------
 }

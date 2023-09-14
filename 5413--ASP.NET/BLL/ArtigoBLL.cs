@@ -23,7 +23,7 @@ namespace _5413__ASP.NET.BLL
             //Offset com fetch - para paginar os artigos
             DAL.DAL dal = new DAL.DAL();
             return dal.obterDs(sqlSelect);
-        }
+        }//--------------------------------------------------------
         public int ObterTotalArtigosDoUtilizador(int utilizadorId)
         {
             string sqlCount = $"SELECT COUNT(*) " +
@@ -32,7 +32,7 @@ namespace _5413__ASP.NET.BLL
 
             DAL.DAL dal = new DAL.DAL();
             return dal.countRows(sqlCount);
-        }
+        }//--------------------------------------------------------
 
         public DataSet ObterTodosOsArtigos()
         {
@@ -83,27 +83,47 @@ namespace _5413__ASP.NET.BLL
             return dal.crud(sqlUpdate);
         }//-------------------------------------------------------
 
-        public DataSet ObterArtigosPorData(int ano, int mes)
+        public DataSet ObterArtigosPorDataECategoria(int ano, int mes, List<int> categorias)
         {
+            string categoriaFilter = "";
+            if (categorias.Count > 0)
+            {
+                categoriaFilter = $"AND CategoriaId IN ({string.Join(",", categorias)})";
+            }
+
             string sqlSelect = $@"
-            SELECT A.*, C.Nome AS NomeCategoria
-            FROM Artigos AS A
-            INNER JOIN Categorias AS C ON A.CategoriaId = C.Id
-            WHERE YEAR(A.DataPublicacao) = {ano} AND MONTH(A.DataPublicacao) = {mes}
-            ORDER BY DataPublicacao DESC
-            ";
+    SELECT A.*, C.Nome AS NomeCategoria
+    FROM Artigos AS A
+    INNER JOIN Categorias AS C ON A.CategoriaId = C.Id
+    WHERE YEAR(A.DataPublicacao) = {ano} AND MONTH(A.DataPublicacao) = {mes} {categoriaFilter}
+    ORDER BY DataPublicacao DESC
+    ";
 
             DAL.DAL dal = new DAL.DAL();
             return dal.obterDs(sqlSelect);
-        }//-------------------------------------------------------
+        }//--------------------------------------------------------
 
-        public DataSet ObterArtigosPorPalavra(string palavra)
+
+        public DataSet ObterArtigosPorPalavraECategoria(string palavra, List<int> categorias)
         {
-            string sqlSelect = $@" select * from artigos where conteudo like '%" + palavra + "%' ORDER BY DataPublicacao DESC;";
+            string categoriaFilter = "";
+            if (categorias.Count > 0)
+            {
+                categoriaFilter = $"AND CategoriaId IN ({string.Join(",", categorias)})";
+            }
+
+            string sqlSelect = $@"
+    SELECT A.*, C.Nome AS NomeCategoria
+    FROM Artigos AS A
+    INNER JOIN Categorias AS C ON A.CategoriaId = C.Id
+    WHERE Conteudo LIKE '%{palavra}%' {categoriaFilter}
+    ORDER BY DataPublicacao DESC
+    ";
 
             DAL.DAL dal = new DAL.DAL();
             return dal.obterDs(sqlSelect);
-        }//-------------------------------------------------------
+        }//--------------------------------------------------------
+
 
         public int Liked(int artigo, int user)
         {

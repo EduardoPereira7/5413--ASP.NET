@@ -23,12 +23,7 @@ namespace _5413__ASP.NET.UI
             string Email = txtRegisterEmail.Text;
             string Password = txtRegisterPassword.Text;
 
-
-
             lblRegisterError.Text = "";
-
-
-
             int validateCount = 0;
 
             if (Nome.Length > 4)

@@ -80,6 +80,14 @@ namespace _5413__ASP.NET.UI
             if (b.verSeAdmin(userId) < 1 || b.contaAdmins() > 1) //se não for Admin ou não for unico Admin
             {
                 bool exclusaoBemSucedida = b.eliminarUtilizador(userId);
+
+                Utilizador user = (Utilizador)Session["Utilizador"];
+                if (user.Id == userId)
+                {
+                    Session.Abandon();
+                    Response.Redirect("index.aspx");
+                }
+
                 Session["FeedbackMessage"] = exclusaoBemSucedida
                 ? "Utilizador eliminado com sucesso!"
                 : "Ocorreu um erro ao eliminar o utilizador. Por favor, tente novamente.";
@@ -135,16 +143,16 @@ namespace _5413__ASP.NET.UI
 
             Response.Redirect("ArtigosUtilizador.aspx?userId=" + userId);
         }
-
+        //--------------------------------------------------------
         protected void criarArtigo_Click(object sender, EventArgs e)
         {
             Response.Redirect("CriarArtigo.aspx");
-        }
+        }//--------------------------------------------------------
 
         protected void gerirMeusArtigos_Click(object sender, EventArgs e)
         {
             Response.Redirect("UserDashboard.aspx");
-        }
+        }//--------------------------------------------------------
         private void MostrarMensagensFeedback()
         {
             if (Session["FeedbackMessage"] != null)
@@ -155,6 +163,6 @@ namespace _5413__ASP.NET.UI
                 feedbackTop.Visible = true;
                 Session.Remove("FeedbackMessage");
             }
-        }
+        }//--------------------------------------------------------
     }
 }

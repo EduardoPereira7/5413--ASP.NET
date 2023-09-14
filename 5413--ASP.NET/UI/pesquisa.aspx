@@ -26,12 +26,18 @@
                 <asp:Button ID="btn_PesquizarData" runat="server" OnClick="btn_Pesquizar_Click" Text="PESQUISAR" Font-Bold="True" Font-Size="Small" CssClass="btn btn-primary btn-block" />
             </div>
         </div>
+    <hr />
+<div class="form-group">
+    <label for="chkCategorias">Categorias:</label>
+    <asp:CheckBoxList ID="chkCategorias" runat="server" CssClass="form-check" RepeatDirection="Horizontal">
+
+    </asp:CheckBoxList>
+</div>
         <hr />
         <p class="text-center">
             <asp:Label ID="L_alert" runat="server" Font-Bold="True" ForeColor="#CC0000" Text="Label" Visible="False"></asp:Label>
         </p>
         <div id="CardsContainer" runat="server" class="d-flex justify-content-center flex-column align-items-center mt-5">
-            <!-- Artigos aqui -->
         </div>
     <div class="d-flex justify-content-center pagination mt-3">
         <asp:Button ID="btnPrev" runat="server" Text="Anterior" Visible="false" OnClick="btnPrev_Click" CssClass="btn btn-primary mx-2 mb-5" />

@@ -60,6 +60,15 @@ namespace _5413__ASP.NET.UI
         protected global::System.Web.UI.WebControls.Button btn_PesquizarData;
 
         /// <summary>
+        /// chkCategorias control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList chkCategorias;
+
+        /// <summary>
         /// L_alert control.
         /// </summary>
         /// <remarks>

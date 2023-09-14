@@ -11,7 +11,6 @@
     </div>
 </div>
     <div id="cardsContainer" runat="server" class="d-flex justify-content-center flex-column align-items-center">
-        <!-- Cards aqui -->
         <asp:Label ID="lblSemArtigos" runat="server" Text="Nenhum artigo para mostrar" Visible="false" Font-Bold="true" Font-Size="Large"/>
     </div>
     <div class="d-flex justify-content-center pagination mt-3">

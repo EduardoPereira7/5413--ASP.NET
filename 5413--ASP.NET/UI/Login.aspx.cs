@@ -44,6 +44,6 @@ namespace _5413__ASP.NET.UI
                 lblLoginError.Visible = true;
                 lblLoginError.Text = "Email ou password inválidos. Por favor, tente novamente.";
             }
-        }
+        }//--------------------------------------------------------
     }
 }
