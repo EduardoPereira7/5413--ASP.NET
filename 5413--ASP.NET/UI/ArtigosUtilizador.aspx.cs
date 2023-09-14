@@ -13,7 +13,7 @@ namespace _5413__ASP.NET.UI
     public partial class ArtigosUtilizador : System.Web.UI.Page
     {
         private int userId;
-        private const int ArtigosPorPagina = 8;
+        private const int ArtigosPorPagina = 6;
 
         protected void Page_Load(object sender, EventArgs e)
         {

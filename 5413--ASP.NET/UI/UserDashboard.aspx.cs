@@ -12,7 +12,7 @@ namespace _5413__ASP.NET.UI
     public partial class UserDashboard : System.Web.UI.Page
     {
         private int userId;
-        private int artigosPorPagina = 8;
+        private int artigosPorPagina = 6;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
