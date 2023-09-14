@@ -165,6 +165,11 @@ namespace _5413__ASP.NET.BLL
 
             conn.Close();
         }//-------------------------------------------------------
-
+        public void EliminarLikesdoUtilizador(int userID)
+        {
+            string sql = "DELETE FROM Likes WHERE UtilizadorId = " + userID;
+            DAL.DAL dal = new DAL.DAL();
+            dal.crud(sql);
+        }//-------------------------------------------------------
     }
 }

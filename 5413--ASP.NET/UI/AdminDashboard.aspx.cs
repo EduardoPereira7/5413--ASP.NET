@@ -77,8 +77,10 @@ namespace _5413__ASP.NET.UI
             int userId = Convert.ToInt32(btn.CommandArgument);           
             
             BLL.UtilizadorBLL b = new BLL.UtilizadorBLL();
+            BLL.ArtigoBLL a = new BLL.ArtigoBLL();
             if (b.verSeAdmin(userId) < 1 || b.contaAdmins() > 1) //se não for Admin ou não for unico Admin
             {
+                a.EliminarLikesdoUtilizador(userId);
                 bool exclusaoBemSucedida = b.eliminarUtilizador(userId);
 
                 Utilizador user = (Utilizador)Session["Utilizador"];
@@ -122,8 +124,6 @@ namespace _5413__ASP.NET.UI
             preencherUtilizadoresNaoVerificados();
             preencherTodosUtilizadores();
         }//-----------------------------------------------------------------------------------------
-
-
         
         protected void btnEditar(object sender, EventArgs e)
         {
