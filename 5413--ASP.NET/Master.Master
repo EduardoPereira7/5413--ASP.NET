@@ -29,16 +29,16 @@
                 </div>
                 <ul class="navbar-nav">
                     <li id="loginListItem" runat="server" class="nav-item">
-                        <a id="loginLink" class="nav-link" runat="server" href="~/UI/Login.aspx">Login</a>
+                        <a id="loginLink" class="nav-link" runat="server" href="~/UI/Login.aspx">Entrar</a>
                     </li>
                     <li id="SignUpListItem" runat="server" class="nav-item">
-                        <a id="signUpLink" class="nav-link" runat="server" href="~/UI/SignUp.aspx">Sign up</a>
+                        <a id="signUpLink" class="nav-link" runat="server" href="~/UI/SignUp.aspx">Registar</a>
                     </li>
                      <li id="UserNameListItem" runat="server" class="nav-item">
-                        <a id="UserName" class="nav-link" runat="server" href="index.aspx">Log Out</a>
+                        <a id="UserName" class="nav-link" runat="server" href="index.aspx"></a>
                     </li>
                     <li id="LogOutListItem" runat="server" class="nav-item">
-                        <a id="logoutLink" class="nav-link" runat="server" href="~/UI/Logout.aspx">Log Out</a>
+                        <a id="logoutLink" class="nav-link" runat="server" href="~/UI/Logout.aspx">Terminar Sessão</a>
                     </li>
                 </ul>
             </div>
