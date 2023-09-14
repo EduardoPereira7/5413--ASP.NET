@@ -27,7 +27,7 @@ namespace _5413__ASP.NET.UI
                     lblAviso2.Visible = true;
                 }
             }
-        }
+        }//--------------------------------------------------------
         private void CarregarCategorias()
         {
              BLL.CategoriaBLL categoriaBLL = new BLL.CategoriaBLL();
@@ -37,7 +37,7 @@ namespace _5413__ASP.NET.UI
              ddlCategoria.DataTextField = "Nome"; 
              ddlCategoria.DataValueField = "Id"; 
              ddlCategoria.DataBind();
-        }
+        }//--------------------------------------------------------
 
         protected void btnCriarArtigo_Click(object sender, EventArgs e)
         {
@@ -82,7 +82,7 @@ namespace _5413__ASP.NET.UI
             }
 
             Response.Redirect("UserDashboard.aspx");
-        }
+        }//--------------------------------------------------------
         private void DesabilitarCampos()
         {
             txtTitulo.Enabled = false;
@@ -91,12 +91,12 @@ namespace _5413__ASP.NET.UI
             ddlCategoria.Enabled = false;
             chkAcessibilidade.Enabled = false;
             btnCriarArtigo.Enabled = false;
-        }
+        }//--------------------------------------------------------
 
         protected void btnVoltar_Click(object sender, EventArgs e)
         {
             Session.Remove("FeedbackMessage");
             Response.Redirect("UserDashboard.aspx");
-        }
+        }//--------------------------------------------------------
     }
 }

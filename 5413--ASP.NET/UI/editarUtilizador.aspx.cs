@@ -20,8 +20,7 @@ namespace _5413__ASP.NET.UI
                 userID = int.Parse(Request.QueryString["id"]);
                 preencheUtilizador(userID);
             }
-            
-        }
+        }//--------------------------------------------------------
 
         protected void preencheUtilizador(int userID)
         {
@@ -38,7 +37,7 @@ namespace _5413__ASP.NET.UI
                 chkVerificado.Checked = Convert.ToBoolean(row["Verificado"]);
                 chkAdmin.Checked = Convert.ToBoolean(row["Admin"]);
             }
-        }
+        }//--------------------------------------------------------
 
         protected void btnEditarUtilizador_Click(object sender, EventArgs e)
         {
@@ -100,12 +99,12 @@ namespace _5413__ASP.NET.UI
             }
             
             Response.Redirect("~/UI/AdminDashboard.aspx");
-        }
+        }//--------------------------------------------------------
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/UI/AdminDashboard.aspx");
-        }
+        }//--------------------------------------------------------
 
         protected void chkNaoAlterarSenha_CheckedChanged(object sender, EventArgs e)
         {
@@ -118,7 +117,7 @@ namespace _5413__ASP.NET.UI
             {
                 txtPassword.Enabled = true;
             }
-        }
+        }//--------------------------------------------------------
         private bool IsValidEmail(string email)
         {
             // Expressão regular para validar o formato de um email

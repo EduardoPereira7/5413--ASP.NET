@@ -33,7 +33,7 @@ namespace _5413__ASP.NET.UI
                     chkAcessibilidade.Checked = Convert.ToBoolean(row["Acessibilidade"]);
                 }
             }
-        }
+        }//--------------------------------------------------------
         private void CarregarCategorias()
         {
             BLL.CategoriaBLL categoriaBLL = new BLL.CategoriaBLL();
@@ -43,7 +43,7 @@ namespace _5413__ASP.NET.UI
             ddlCategoria.DataTextField = "Nome";
             ddlCategoria.DataValueField = "Id";
             ddlCategoria.DataBind();
-        }
+        }//--------------------------------------------------------
         protected void btnEditarArtigo_Click(object sender, EventArgs e)
         {
             string novoTitulo = txtTitulo.Text;
@@ -75,11 +75,11 @@ namespace _5413__ASP.NET.UI
                 Session["FeedbackMessage"] = "Ocorreu um erro ao editar o artigo. Por favor, tente novamente.";
             }
             Response.Redirect("~/UI/UserDashboard.aspx"); ;
-        }
+        }//--------------------------------------------------------
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/UI/UserDashboard.aspx");
-        }
+        }//--------------------------------------------------------
     }
 }

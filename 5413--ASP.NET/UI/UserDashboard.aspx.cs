@@ -31,14 +31,14 @@ namespace _5413__ASP.NET.UI
             SetupDashboard(user);
             CarregarArtigos();
             MostrarMensagensFeedback();
-        }
+        }//--------------------------------------------------------
 
         private void SetupDashboard(Utilizador user)
         {
             divCriarArtigo.Attributes["class"] = user.Admin ? "col-md-6" : "col-md-12";
             divAdminDashboard.Visible = user.Admin;
             btnAdminDashboard.Visible = user.Admin;
-        }
+        }//--------------------------------------------------------
 
         private void CarregarArtigos()
         {
@@ -57,7 +57,7 @@ namespace _5413__ASP.NET.UI
 
             btnPrevious.Enabled = paginaAtual > 0;
             btnNext.Enabled = paginaAtual < totalPaginas - 1;
-        }
+        }//--------------------------------------------------------
 
         private void MostrarMensagensFeedback()
         {
@@ -69,12 +69,12 @@ namespace _5413__ASP.NET.UI
                 feedbackTop.Visible = true;
                 Session.Remove("FeedbackMessage");
             }
-        }
+        }//--------------------------------------------------------
 
         protected void criarArtigo_Click(object sender, EventArgs e)
         {
             Response.Redirect("CriarArtigo.aspx");
-        }
+        }//--------------------------------------------------------
 
         protected void btnEditar_Click(object sender, EventArgs e)
         {
@@ -82,7 +82,7 @@ namespace _5413__ASP.NET.UI
             int artigoId = Convert.ToInt32(btnEditar.CommandArgument);
 
             Response.Redirect($"EditarArtigo.aspx?id={artigoId}");
-        }
+        }//--------------------------------------------------------
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -97,19 +97,19 @@ namespace _5413__ASP.NET.UI
                 : "Ocorreu um erro ao eliminar o artigo. Por favor, tente novamente.";
 
             Response.Redirect("UserDashboard.aspx");
-        }
+        }//--------------------------------------------------------
 
         protected void btnAdminDashboard_Click(object sender, EventArgs e)
         {
             Response.Redirect("AdminDashboard.aspx");
-        }
+        }//--------------------------------------------------------
 
         protected void btnVer_Click(object sender, EventArgs e)
         {
             Button btnVer = (Button)sender;
             int artigoId = Convert.ToInt32(btnVer.CommandArgument);
             Response.Redirect($"PaginaArtigo.aspx?id={artigoId}");
-        }
+        }//--------------------------------------------------------
 
         protected void btnPrevious_Click(object sender, EventArgs e)
         {
@@ -121,7 +121,7 @@ namespace _5413__ASP.NET.UI
                 Session["indexAtualPagina"] = paginaAtual;
                 CarregarArtigos();
             }
-        }
+        }//--------------------------------------------------------
 
         protected void btnNext_Click(object sender, EventArgs e)
         {
@@ -137,7 +137,7 @@ namespace _5413__ASP.NET.UI
                 Session["indexAtualPagina"] = paginaAtual;
                 CarregarArtigos();
             }
-        }
+        }//--------------------------------------------------------
 
         private void EsconderMensagensFeedback()
         {
@@ -145,6 +145,6 @@ namespace _5413__ASP.NET.UI
             {
                 feedbackTop.Visible = false;
             }
-        }
+        }//--------------------------------------------------------
     }
 }

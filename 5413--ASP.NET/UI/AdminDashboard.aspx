@@ -5,9 +5,6 @@
     <div class="container mb-5">
         <div class="text-center mt-4 mb-5">
         <h1 class="font-weight-bold">Admin Dashboard</h1>
-            <%--<p class="font-weight-bold">
-                <asp:Label ID="L_Error" runat="server" ForeColor="Red" Text="ERROR" Visible="False"></asp:Label>
-            </p>--%>
             <asp:Label ID="feedbackTop" runat="server" Visible="false" style='font-weight:bold; font-size:18px;'></asp:Label>
     </div>
         <div class="container d-flex mt-5">

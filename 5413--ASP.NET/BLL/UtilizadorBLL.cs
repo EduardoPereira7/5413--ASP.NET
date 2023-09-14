@@ -13,8 +13,6 @@ namespace _5413__ASP.NET.BLL
 
         public bool criarUtilizador(string nome, string email, string password)
         {
-
-            //insert into utilizadores values('admin','admin@admin','admin', 1 , 1);
             sqlCommand = "Insert into Utilizadores values('" 
                 + nome + "','" 
                 + email + "','"
@@ -32,7 +30,6 @@ namespace _5413__ASP.NET.BLL
             sqlCommand = "SELECT * FROM Utilizadores WHERE Email = '" + email + "' AND Password = '" + password + "'";
             DataSet ds = dal.obterDs(sqlCommand);
 
-            // Verifica se a consulta retornou algum resultado (utilizador encontrado).
             if (ds.Tables[0].Rows.Count > 0)
             {
                 // Se houver pelo menos uma linha de resultado, cria um objeto Utilizador com os dados obtidos do banco de dados.
@@ -124,8 +121,6 @@ namespace _5413__ASP.NET.BLL
         }//-------------------------------------------------------------------------------------------------------------
         public bool editarUtilizador(int userID, string nome, string email, string password, int verificado , int admin)
         {
-
-            //string sql = "update Artigos SET descricao = '"
             sqlCommand = "update Utilizadores SET nome = '" + nome 
                 + "',email = '" + email 
                 + "',password = '" + password 

@@ -135,16 +135,16 @@ namespace _5413__ASP.NET.UI
 
             Response.Redirect("ArtigosUtilizador.aspx?userId=" + userId);
         }
-
+        //--------------------------------------------------------
         protected void criarArtigo_Click(object sender, EventArgs e)
         {
             Response.Redirect("CriarArtigo.aspx");
-        }
+        }//--------------------------------------------------------
 
         protected void gerirMeusArtigos_Click(object sender, EventArgs e)
         {
             Response.Redirect("UserDashboard.aspx");
-        }
+        }//--------------------------------------------------------
         private void MostrarMensagensFeedback()
         {
             if (Session["FeedbackMessage"] != null)
@@ -155,6 +155,6 @@ namespace _5413__ASP.NET.UI
                 feedbackTop.Visible = true;
                 Session.Remove("FeedbackMessage");
             }
-        }
+        }//--------------------------------------------------------
     }
 }
