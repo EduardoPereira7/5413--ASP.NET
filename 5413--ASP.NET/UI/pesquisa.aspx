@@ -33,5 +33,9 @@
         <div id="CardsContainer" runat="server" class="d-flex justify-content-center flex-column align-items-center mt-5">
             <!-- Artigos aqui -->
         </div>
+    <div class="d-flex justify-content-center pagination mt-3">
+        <asp:Button ID="btnPrev" runat="server" Text="Anterior" Visible="false" OnClick="btnPrev_Click" CssClass="btn btn-primary mx-2 mb-5" />
+        <asp:Button ID="btnNext" runat="server" Text="Próximo" Visible="false" OnClick="btnNext_Click" CssClass="btn btn-primary mx-2 mb-5" />
+    </div>
     </div>
 </asp:Content>

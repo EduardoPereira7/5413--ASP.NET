@@ -13,14 +13,20 @@ namespace _5413__ASP.NET.UI
 {
     public partial class pesquisa1 : System.Web.UI.Page
     {
+        int indexAtualPagina;
+
+        int artigosPorPagina = 4;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 preencherDatas();
+                Session["indexAtualPagina"] = 0;
             }
-
+            indexAtualPagina = Convert.ToInt32(Session["indexAtualPagina"]);
+            
+            
         }//--------------------------------------------------------
 
         protected void preencherDatas()
@@ -50,9 +56,10 @@ namespace _5413__ASP.NET.UI
             int mesSelecionado = Convert.ToInt32(DD_Mes.SelectedValue);
 
             ArtigoBLL artigoBLL = new ArtigoBLL();
-            DataSet dataSet = artigoBLL.ObterArtigosPorData(anoSelecionado, mesSelecionado);
+            Session["MeuDataSet"] = artigoBLL.ObterArtigosPorData(anoSelecionado, mesSelecionado);
+            
 
-            afixaArtigos(dataSet);
+            afixaArtigos(indexAtualPagina);
         }//--------------------------------------------------------
 
         protected void btn_PesquisarPalavra_Click(object sender, EventArgs e)
@@ -69,34 +76,34 @@ namespace _5413__ASP.NET.UI
             {
 
                 ArtigoBLL artigoBLL = new ArtigoBLL();
-                DataSet dataSet = artigoBLL.ObterArtigosPorPalavra(pesquisa);
+                Session["MeuDataSet"] = artigoBLL.ObterArtigosPorPalavra(pesquisa);
                 T_pesquisa.Text = string.Empty;
-                afixaArtigos(dataSet);
+                afixaArtigos(indexAtualPagina);
 
             }
         }//--------------------------------------------------------
 
-        protected void afixaArtigos(DataSet dataSet)
+        protected void afixaArtigos(int indexAtualPagina)
         {
-            CardsContainer.InnerHtml = string.Empty;
-            if (dataSet.Tables.Count == 0 || dataSet.Tables[0].Rows.Count == 0)
-            {
-                L_alert.Visible = true;
-                CardsContainer.InnerHtml = "";
-                L_alert.Text = "Não foram encontrados resultados";
-                return;
-            }
+            DataSet dataSet = (DataSet)Session["MeuDataSet"];
+            int indexInicial = indexAtualPagina * artigosPorPagina;
 
-            foreach (DataRow row in dataSet.Tables[0].Rows)
+            if (indexInicial >= 0 && indexInicial < dataSet.Tables[0].Rows.Count)
             {
-                string id = row["Id"].ToString();
-                string titulo = row["Titulo"].ToString();
-                string Subtitulo = row["Subtitulo"].ToString();
-                string likes = row["likes"].ToString();
-                DateTime dataPublicacao = Convert.ToDateTime(row["DataPublicacao"]);
+                int indexFinal = Math.Min(indexInicial + artigosPorPagina, dataSet.Tables[0].Rows.Count);
+                CardsContainer.InnerHtml = string.Empty;
+                
+                L_alert.Visible = false;
+                for (int i = indexInicial; i < indexFinal; i++)
+                {
+                    DataRow row = dataSet.Tables[0].Rows[i];
+                    string id = row["Id"].ToString();
+                    string titulo = row["Titulo"].ToString();
+                    string Subtitulo = row["Subtitulo"].ToString();
+                    string likes = row["likes"].ToString();
+                    DateTime dataPublicacao = Convert.ToDateTime(row["DataPublicacao"]);
 
-                // Criar o HTML do card para cada artigo e adicionar ao InnerHtml
-                string cardHtml = $@"
+                    string cardHtml = $@"
                     <div class='card bg-light mb-3 custom-card'>
                             <a href='PaginaArtigo.aspx?id={id}' class='card-link card-link-custom'>
                             <div class='card mb-3' style='border: 2px solid #000;'>
@@ -110,10 +117,41 @@ namespace _5413__ASP.NET.UI
                             <a>
                     </div>";
 
-                CardsContainer.InnerHtml += cardHtml;
+                    CardsContainer.InnerHtml += cardHtml;
+                }
+                CardsContainer.Attributes["class"] = "d-flex justify-content-center flex-column align-items-center";
+                btnPrev.Visible = true;
+                btnNext.Visible = true;
+                btnPrev.Enabled = indexAtualPagina > 0;
+                btnNext.Enabled = indexInicial + artigosPorPagina < dataSet.Tables[0].Rows.Count;
             }
+            else
+            {
+                L_alert.Visible = true;
+                btnPrev.Visible = false;
+                btnNext.Visible = false;
+                CardsContainer.InnerHtml = "";
+                L_alert.Text = "Não foram encontrados resultados";
+                return;
 
-            CardsContainer.Attributes["class"] = "d-flex justify-content-center flex-column align-items-center";
+            }
         }//--------------------------------------------------------
+
+        protected void btnPrev_Click(object sender, EventArgs e)
+        {
+            int indexAtualPagina = Convert.ToInt32(Session["indexAtualPagina"]);
+            indexAtualPagina--;
+            Session["indexAtualPagina"] = indexAtualPagina;
+            afixaArtigos(indexAtualPagina);
+        }
+
+        protected void btnNext_Click(object sender, EventArgs e)
+        {
+            int indexAtualPagina = Convert.ToInt32(Session["indexAtualPagina"]);
+            indexAtualPagina++;
+            Session["indexAtualPagina"] = indexAtualPagina;
+            
+            afixaArtigos(indexAtualPagina);
+        }
     }
 }

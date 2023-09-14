@@ -7,17 +7,17 @@
             <h2 class="font-weight-bold">Login</h2>
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
+            <label for="exampleInputEmail1">Email</label>
             <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" TextMode="Email"></asp:TextBox>
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <small id="emailHelp" class="form-text text-muted">Nós nunca compartilharemos o seu email com mais alguém.</small>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
             <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
         </div>
         <div class="d-flex justify-content-center align-items-center flex-column mt-4">
-            <asp:Label ID="lblLoginError" runat="server" Text="Label" Visible="false" CssClass="mb-4 text-danger"></asp:Label>
-            <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn btn-dark w-25" OnClick="btnLogin_Click" />
+            <asp:Label ID="lblLoginError" runat="server" Text="Label" Visible="false" CssClass="mb-4 text-danger" style='font-weight:bold; font-size:18px;'></asp:Label>
+            <asp:Button ID="btnLogin" runat="server" Text="Entrar" CssClass="btn btn-dark w-25" OnClick="btnLogin_Click" />
         </div>
     </div>
 </asp:Content>

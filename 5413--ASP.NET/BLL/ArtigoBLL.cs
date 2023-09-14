@@ -90,6 +90,7 @@ namespace _5413__ASP.NET.BLL
             FROM Artigos AS A
             INNER JOIN Categorias AS C ON A.CategoriaId = C.Id
             WHERE YEAR(A.DataPublicacao) = {ano} AND MONTH(A.DataPublicacao) = {mes}
+            ORDER BY DataPublicacao DESC
             ";
 
             DAL.DAL dal = new DAL.DAL();
@@ -98,7 +99,7 @@ namespace _5413__ASP.NET.BLL
 
         public DataSet ObterArtigosPorPalavra(string palavra)
         {
-            string sqlSelect = $@" select * from artigos where conteudo like '%" + palavra + "%';";
+            string sqlSelect = $@" select * from artigos where conteudo like '%" + palavra + "%' ORDER BY DataPublicacao DESC;";
 
             DAL.DAL dal = new DAL.DAL();
             return dal.obterDs(sqlSelect);
