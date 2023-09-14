@@ -80,6 +80,14 @@ namespace _5413__ASP.NET.UI
             if (b.verSeAdmin(userId) < 1 || b.contaAdmins() > 1) //se não for Admin ou não for unico Admin
             {
                 bool exclusaoBemSucedida = b.eliminarUtilizador(userId);
+
+                Utilizador user = (Utilizador)Session["Utilizador"];
+                if (user.Id == userId)
+                {
+                    Session.Abandon();
+                    Response.Redirect("index.aspx");
+                }
+
                 Session["FeedbackMessage"] = exclusaoBemSucedida
                 ? "Utilizador eliminado com sucesso!"
                 : "Ocorreu um erro ao eliminar o utilizador. Por favor, tente novamente.";

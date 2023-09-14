@@ -21,6 +21,19 @@ namespace _5413__ASP.NET.UI
             {
                 Session["indexAtualPagina"] = 0;
             }
+            if (Session["Utilizador"] == null)
+            {
+                Response.Redirect("Login.aspx");
+                return;
+            }
+
+            Utilizador user = (Utilizador)Session["Utilizador"];
+
+            if (!user.Admin)
+            {
+                Response.Redirect("index.aspx");
+                return;
+            }
 
             if (Request.QueryString["userId"] != null)
             {

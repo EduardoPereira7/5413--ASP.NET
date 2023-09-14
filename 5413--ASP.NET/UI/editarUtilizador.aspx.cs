@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _5413__ASP.NET.BLL;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -15,6 +16,19 @@ namespace _5413__ASP.NET.UI
         static int userID;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Utilizador"] == null)
+            {
+                Response.Redirect("Login.aspx");
+                return;
+            }
+
+            Utilizador user = (Utilizador)Session["Utilizador"];
+
+            if (!user.Admin)
+            {
+                Response.Redirect("index.aspx");
+                return;
+            }
             if (!IsPostBack)
             {
                 userID = int.Parse(Request.QueryString["id"]);

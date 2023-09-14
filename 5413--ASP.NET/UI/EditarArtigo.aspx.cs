@@ -15,6 +15,11 @@ namespace _5413__ASP.NET.UI
         static int artigoId;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Utilizador"] == null)
+            {
+                Response.Redirect("Login.aspx");
+                return;
+            }
             if (!IsPostBack)
             {
                 artigoId = Convert.ToInt32(Request.QueryString["id"]); 
