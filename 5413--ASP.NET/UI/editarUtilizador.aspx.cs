@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -79,6 +80,12 @@ namespace _5413__ASP.NET.UI
                 }
                 
             }
+            if (!IsValidEmail(novoEmail))
+            {
+                lblAvisoEmail.Text = "Email inválido";
+                lblAvisoEmail.Visible = true;
+                return;
+            }
 
             BLL.UtilizadorBLL utilizadorBLL = new BLL.UtilizadorBLL();
             bool edicaoBemSucedida = utilizadorBLL.editarUtilizador(userID, novoNome, novoEmail, novaPassword, novoVerificado, novoAdmin);
@@ -111,6 +118,14 @@ namespace _5413__ASP.NET.UI
             {
                 txtPassword.Enabled = true;
             }
+        }
+        private bool IsValidEmail(string email)
+        {
+            // Expressão regular para validar o formato de um email
+            string pattern = @"^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$";
+
+            // Use a classe Regex para verificar se o email corresponde ao padrão
+            return Regex.IsMatch(email, pattern);
         }
     }
 }
